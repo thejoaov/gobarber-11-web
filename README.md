@@ -1,5 +1,5 @@
 <div align="center">
-<img source="https://raw.githubusercontent.com/thejoaov/gobarber-11-web/main/src/assets/logo.svg" width="150px" height="150px" />
+<img source="./src/assets/logo.svg" width="150px" height="150px" />
 
 <p style="font-size:3em;font-family:cursive,sans-serif">GoBarber 11</p>
 <p style="color:#777">Front End Web</p>
