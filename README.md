@@ -1,9 +1,7 @@
 <div align="center">
-<img source="./src/assets/logo.svg" width="150px" height="150px" />
+<img src="./src/assets/logo.svg" height="300" />
 
-<p style="font-size:3em;font-family:cursive,sans-serif">GoBarber 11</p>
-<p style="color:#777">Front End Web</p>
-<hr/>
+<h2 style="color:#777">Front End Web</h2>
 
 
 </div>
