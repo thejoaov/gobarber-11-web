@@ -7,8 +7,6 @@ import Tooltip from '..'
 import theme from '../../../styles/theme'
 import GlobalStyle from '../../../styles/global'
 // import { findByTestID } from '../../../config/testConfig';
-import { AuthProvider } from '../../../hooks/AuthContext'
-import ToastContainer from '../../ToastContainer'
 import { TooltipProps } from '../types'
 
 let wrapper: ReactTestRenderer
@@ -17,10 +15,7 @@ let initialProps: TooltipProps = { title: 'test', testID: 'Tooltip' }
 const TooltipMock: React.FC = () => (
   <ThemeProvider theme={theme}>
     <GlobalStyle />
-    <AuthProvider>
-      <Tooltip {...initialProps} />
-    </AuthProvider>
-    <ToastContainer />
+    <Tooltip {...initialProps} />
   </ThemeProvider>
 )
 

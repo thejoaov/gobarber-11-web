@@ -5,19 +5,16 @@ import { ThemeProvider } from 'styled-components'
 import SignUp from '..'
 import theme from '../../../styles/theme'
 import GlobalStyle from '../../../styles/global'
-import { findByTestID } from '../../../config/testConfig'
-import { AuthProvider } from '../../../hooks/AuthContext'
-import ToastContainer from '../../../components/ToastContainer'
+import ContextProvider from '../../../hooks'
 
 let wrapper: ReactTestRenderer
 
 const SignUpMock: React.FC = () => (
   <ThemeProvider theme={theme}>
     <GlobalStyle />
-    <AuthProvider>
+    <ContextProvider>
       <SignUp />
-    </AuthProvider>
-    <ToastContainer />
+    </ContextProvider>
   </ThemeProvider>
 )
 

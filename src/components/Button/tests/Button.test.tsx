@@ -6,9 +6,8 @@ import { ThemeProvider } from 'styled-components'
 import Button from '..'
 import theme from '../../../styles/theme'
 import GlobalStyle from '../../../styles/global'
-import { findByTestID } from '../../../config/testConfig'
-import { AuthProvider } from '../../../hooks/AuthContext'
-import ToastContainer from '../../ToastContainer'
+// import { findByTestID } from '../../../config/testConfig'
+
 import { ButtonProps } from '../types'
 
 let wrapper: ReactTestRenderer
@@ -17,10 +16,7 @@ let initialProps: ButtonProps = { name: 'test', testID: 'Button' }
 const ButtonMock: React.FC = () => (
   <ThemeProvider theme={theme}>
     <GlobalStyle />
-    <AuthProvider>
-      <Button {...initialProps} />
-    </AuthProvider>
-    <ToastContainer />
+    <Button {...initialProps} />
   </ThemeProvider>
 )
 
