@@ -1,6 +1,7 @@
 import React from 'react'
 import { ReactTestRenderer, act, create } from 'react-test-renderer'
 import { ThemeProvider } from 'styled-components'
+import { BrowserRouter } from 'react-router-dom'
 
 import SignUp from '..'
 import theme from '../../../styles/theme'
@@ -13,7 +14,9 @@ const SignUpMock: React.FC = () => (
   <ThemeProvider theme={theme}>
     <GlobalStyle />
     <ContextProvider>
-      <SignUp />
+      <BrowserRouter>
+        <SignUp />
+      </BrowserRouter>
     </ContextProvider>
   </ThemeProvider>
 )

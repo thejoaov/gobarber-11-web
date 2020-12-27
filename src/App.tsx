@@ -1,18 +1,20 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
+import { BrowserRouter } from 'react-router-dom'
 
 import GlobalStyle from './styles/global'
-import SignIn from './pages/SignIn'
-// import SignUp from './pages/SignUp';
 
 import ContextProvider from './hooks'
 import theme from './styles/theme'
+import Routes from './routes'
 
 const App: React.FC = () => (
   <ThemeProvider theme={theme}>
     <GlobalStyle />
     <ContextProvider>
-      <SignIn />
+      <BrowserRouter>
+        <Routes />
+      </BrowserRouter>
     </ContextProvider>
   </ThemeProvider>
 )
