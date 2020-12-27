@@ -1,6 +1,5 @@
 import { transparentize } from 'polished'
 import styled from 'styled-components'
-import { ToastProps } from './types'
 
 export const Container = styled.div<{ testID: string; type: 'success' | 'warning' | 'error' | 'info' }>`
   width: 360px;
