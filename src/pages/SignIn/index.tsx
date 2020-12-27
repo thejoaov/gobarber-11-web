@@ -11,11 +11,13 @@ import logoImg from '../../assets/logo.svg'
 import getValidationErrors from '../../utils/getValidationErrors'
 import { useAuth } from '../../hooks/AuthContext'
 import { SignInFormData } from './types'
+import { useToast } from '../../hooks/ToastContext'
 
 const SignIn: React.FC = () => {
   const formRef = useRef<FormHandles>(null)
 
   const { signIn } = useAuth()
+  const { addToast, removeToast } = useToast()
 
   const handleSubmit = useCallback(
     async (data: SignInFormData) => {
@@ -31,7 +33,7 @@ const SignIn: React.FC = () => {
           abortEarly: false,
         })
 
-        signIn({ email: data.email, password: data.password })
+        await signIn({ email: data.email, password: data.password })
       } catch (error) {
         if (error instanceof Yup.ValidationError) {
           const errors = getValidationErrors(error)
@@ -39,10 +41,10 @@ const SignIn: React.FC = () => {
           formRef.current?.setErrors(errors)
         }
 
-        // disparar um toast
+        addToast()
       }
     },
-    [signIn],
+    [signIn, addToast],
   )
 
   return (
