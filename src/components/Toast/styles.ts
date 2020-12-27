@@ -2,7 +2,7 @@ import { transparentize } from 'polished'
 import styled from 'styled-components'
 import { ToastProps } from './types'
 
-export const Container = styled.div<Omit<ToastProps, 'title'>>`
+export const Container = styled.div<{ testID: string; type: 'success' | 'warning' | 'error' | 'info' }>`
   width: 360px;
   position: relative;
   padding: 16px 30px 16px 16px;

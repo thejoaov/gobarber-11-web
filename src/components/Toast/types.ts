@@ -1,6 +1,9 @@
 export type ToastProps = {
-  title: string
-  type: 'success' | 'error' | 'info' | 'warning'
   testID?: string
-  description?: string
+  toast: {
+    id: string
+    title: string
+    type?: 'success' | 'error' | 'info' | 'warning'
+    description?: string
+  }
 }

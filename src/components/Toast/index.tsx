@@ -1,31 +1,45 @@
-import React from 'react'
+/* eslint-disable react/destructuring-assignment */
+import React, { useEffect } from 'react'
 import { FiAlertTriangle, FiCheckCircle, FiInfo, FiXCircle, FiXOctagon } from 'react-icons/fi'
+import { useToast } from '../../hooks/ToastContext'
 
 import { Container } from './styles'
 import { ToastProps } from './types'
 
-const Toast: React.FC<ToastProps> = ({ title, description, ...props }) => {
+const Toast: React.FC<ToastProps> = ({ toast, toast: { type = 'info' }, ...props }) => {
+  const { removeToast } = useToast()
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      removeToast(toast.id)
+    }, 3000)
+
+    return () => {
+      clearTimeout(timer)
+    }
+  }, [toast.id, removeToast])
+
   const getIcon = (): JSX.Element => {
     const icons = {
-      info: <FiInfo />,
-      warning: <FiAlertTriangle />,
-      success: <FiCheckCircle />,
-      error: <FiXOctagon />,
+      info: <FiInfo size={24} />,
+      warning: <FiAlertTriangle size={24} />,
+      success: <FiCheckCircle size={24} />,
+      error: <FiXOctagon size={24} />,
     }
 
-    return icons[props.type]
+    return icons[type]
   }
 
   return (
-    <Container {...props}>
+    <Container testID={props.testID || `toast-${type}-${toast.id}`} type={type}>
       {getIcon()}
 
       <div>
-        <strong>{title}</strong>
+        <strong>{toast.title}</strong>
 
-        {!!description && <p>{description}</p>}
+        {!!toast.description && <p>{toast.description}</p>}
 
-        <button type="button">
+        <button type="button" onClick={() => removeToast(toast.id)}>
           <FiXCircle size={18} />
         </button>
       </div>

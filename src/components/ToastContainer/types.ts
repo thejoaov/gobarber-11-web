@@ -1,3 +1,5 @@
+import { ToastMessage } from '../../hooks/ToastContext/types'
+
 export type ToastContainerProps = {
-  testID: string
+  messages: ToastMessage[]
 }

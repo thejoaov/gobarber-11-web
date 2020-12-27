@@ -41,7 +41,7 @@ const SignIn: React.FC = () => {
           formRef.current?.setErrors(errors)
         }
 
-        addToast()
+        addToast({ title: 'Erro', type: 'error', description: 'Verifique seu usuário e senha e tente novamente' })
       }
     },
     [signIn, addToast],

@@ -6,25 +6,21 @@ import { ThemeProvider } from 'styled-components'
 import ToastContainer from '..'
 import theme from '../../../styles/theme'
 import GlobalStyle from '../../../styles/global'
-// import { findByTestID } from '../../../config/testConfig';
-import { AuthProvider } from '../../../hooks/AuthContext'
-// import { ToastContainerProps } from '../types';
+import { ToastMessage } from '../../../hooks/ToastContext/types'
 
 let wrapper: ReactTestRenderer
-// let initialProps: ToastContainerProps = { testID: 'ToastContainer' };
+let messages: ToastMessage[] = []
 
 const ToastContainerMock: React.FC = () => (
   <ThemeProvider theme={theme}>
     <GlobalStyle />
-    <AuthProvider>
-      <></>
-    </AuthProvider>
-    <ToastContainer />
+    <ToastContainer messages={messages} />
   </ThemeProvider>
 )
 
 describe('ToastContainer test suite', () => {
   beforeEach(async () => {
+    messages = []
     await act(async () => {
       wrapper = create(<ToastContainerMock />)
     })
@@ -32,5 +28,16 @@ describe('ToastContainer test suite', () => {
 
   it('should render without explode', () => {
     expect(wrapper).toBeTruthy()
+  })
+
+  it('should render some toast', async () => {
+    const testInstance = wrapper.root
+    messages = [{ id: '1', title: 'test' }]
+
+    await wrapper.update(<ToastContainerMock />)
+
+    const toast = testInstance.findByProps({ testID: 'toast-info-1' })
+
+    expect(toast).toBeTruthy()
   })
 })

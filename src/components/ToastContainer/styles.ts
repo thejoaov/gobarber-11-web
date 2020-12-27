@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
+export const Container = styled.div<{ testID: string }>`
   position: absolute;
   top: 0;
   right: 0;
