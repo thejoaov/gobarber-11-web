@@ -11,11 +11,15 @@ import { Container, Content, Background, AnimatedContainer } from './styles'
 import Input from '../../components/Input'
 import Button from '../../components/Button'
 import getValidationErrors from '../../utils/getValidationErrors'
+import { Api } from '../../services/api'
+import { useToast } from '../../hooks/ToastContext'
 
 const SignUp: React.FC = () => {
   const formRef = useRef<FormHandles>(null)
 
-  const handleSubmit = useCallback(async (data: object) => {
+  const { addToast } = useToast()
+
+  const handleSubmit = useCallback(async (data: { name: string; email: string; password: string }) => {
     try {
       formRef.current?.setErrors({})
 
@@ -27,6 +31,14 @@ const SignUp: React.FC = () => {
 
       await schema.validate(data, {
         abortEarly: false,
+      })
+
+      await Api.signUp(data)
+
+      addToast({
+        title: 'Usuário cadastrado com sucesso',
+        description: 'Você fez o cadastro com sucesso! Agora é só fazer seu login.',
+        type: 'success',
       })
     } catch (error) {
       const errors = getValidationErrors(error)

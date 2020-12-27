@@ -10,4 +10,14 @@ export const Api = {
       password,
       email,
     }),
+
+  /**
+   * Send a request to sign up
+   */
+  signUp: ({ name, email, password }: { name: string; email: string; password: string }): AxiosPromise<any> =>
+    ApiConfig.post('users', {
+      name,
+      password,
+      email,
+    }),
 }
