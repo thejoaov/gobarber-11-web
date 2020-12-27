@@ -9,18 +9,18 @@ import GlobalStyle from '../../../styles/global'
 import { ToastMessage } from '../../../hooks/ToastContext/types'
 
 let wrapper: ReactTestRenderer
-let messages: ToastMessage[] = []
+let toasts: ToastMessage[] = []
 
 const ToastContainerMock: React.FC = () => (
   <ThemeProvider theme={theme}>
     <GlobalStyle />
-    <ToastContainer messages={messages} />
+    <ToastContainer toasts={toasts} />
   </ThemeProvider>
 )
 
 describe('ToastContainer test suite', () => {
   beforeEach(async () => {
-    messages = []
+    toasts = []
     await act(async () => {
       wrapper = create(<ToastContainerMock />)
     })
@@ -32,7 +32,7 @@ describe('ToastContainer test suite', () => {
 
   it('should render some toast', async () => {
     const testInstance = wrapper.root
-    messages = [{ id: '1', title: 'test' }]
+    toasts = [{ id: '1', title: 'test' }]
 
     await wrapper.update(<ToastContainerMock />)
 

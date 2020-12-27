@@ -1,3 +1,5 @@
+import { CSSProperties } from 'react'
+
 export type ToastProps = {
   testID?: string
   toast: {
@@ -6,4 +8,5 @@ export type ToastProps = {
     type?: 'success' | 'error' | 'info' | 'warning'
     description?: string
   }
+  style: CSSProperties
 }

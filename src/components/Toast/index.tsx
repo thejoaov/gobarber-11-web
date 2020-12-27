@@ -1,8 +1,8 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { useEffect } from 'react'
 import { FiAlertTriangle, FiCheckCircle, FiInfo, FiXCircle, FiXOctagon } from 'react-icons/fi'
-import { useToast } from '../../hooks/ToastContext'
 
+import { useToast } from '../../hooks/ToastContext'
 import { Container } from './styles'
 import { ToastProps } from './types'
 
@@ -31,7 +31,7 @@ const Toast: React.FC<ToastProps> = ({ toast, toast: { type = 'info' }, ...props
   }
 
   return (
-    <Container testID={props.testID || `toast-${type}-${toast.id}`} type={type}>
+    <Container testID={props.testID || `toast-${type}-${toast.id}`} type={type} style={props.style}>
       {getIcon()}
 
       <div>

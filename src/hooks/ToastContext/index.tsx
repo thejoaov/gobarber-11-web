@@ -7,12 +7,12 @@ import { ToastContextData, ToastMessage } from './types'
 const ToastContext = createContext<ToastContextData>({} as ToastContextData)
 
 export const ToastProvider: React.FC = ({ children }) => {
-  const [messages, setMessages] = useState<ToastMessage[]>([])
+  const [toasts, setToasts] = useState<ToastMessage[]>([])
 
   const addToast = useCallback(({ type, title, description }: Omit<ToastMessage, 'id'>) => {
     const id = uuid()
 
-    setMessages(state => [
+    setToasts(state => [
       ...state,
       {
         id,
@@ -23,13 +23,13 @@ export const ToastProvider: React.FC = ({ children }) => {
     ])
   }, [])
   const removeToast = useCallback((id: string) => {
-    setMessages(state => state.filter(message => message.id !== id))
+    setToasts(state => state.filter(message => message.id !== id))
   }, [])
 
   return (
     <ToastContext.Provider value={{ addToast, removeToast }}>
       {children}
-      <ToastContainer messages={messages} />
+      <ToastContainer toasts={toasts} />
     </ToastContext.Provider>
   )
 }

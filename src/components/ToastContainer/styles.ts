@@ -6,4 +6,8 @@ export const Container = styled.div<{ testID: string }>`
   right: 0;
   padding: 30px;
   overflow: hidden;
+
+  > div + div {
+    margin-top: 10px;
+  }
 `

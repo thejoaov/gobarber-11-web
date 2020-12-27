@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { FiLogIn, FiLock, FiMail } from 'react-icons/fi'
 import { Form } from '@unform/web'
 import { FormHandles } from '@unform/core'
@@ -14,6 +14,7 @@ import { SignInFormData } from './types'
 import { useToast } from '../../hooks/ToastContext'
 
 const SignIn: React.FC = () => {
+  const [errorCount, setErrorCount] = useState(0)
   const formRef = useRef<FormHandles>(null)
 
   const { signIn } = useAuth()
@@ -36,15 +37,31 @@ const SignIn: React.FC = () => {
         await signIn({ email: data.email, password: data.password })
       } catch (error) {
         if (error instanceof Yup.ValidationError) {
+          if (errorCount < 5) {
+            setErrorCount(errorCount + 1)
+          }
+
           const errors = getValidationErrors(error)
 
           formRef.current?.setErrors(errors)
         }
 
-        addToast({ title: 'Erro', type: 'error', description: 'Verifique seu usuário e senha e tente novamente' })
+        addToast({
+          title: 'Erro na autenticação',
+          type: 'error',
+          description: 'Verifique seu email e senha e tente novamente',
+        })
+
+        if (errorCount >= 5) {
+          addToast({
+            title: 'Está com problemas?',
+            description: 'Você está com problemas no login? Tente redefinir sua senha em "Esqueci minha senha".',
+            type: 'warning',
+          })
+        }
       }
     },
-    [signIn, addToast],
+    [signIn, addToast, errorCount],
   )
 
   return (

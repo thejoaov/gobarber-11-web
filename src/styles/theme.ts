@@ -35,7 +35,7 @@ const theme: DefaultTheme = {
     gray: ['#f4ede8', '#666360', '#232129'],
     semantic: {
       success: '#00a99d',
-      warning: '#fcc14f',
+      warning: '#ff9000',
       error: '#c53030',
       info: '#3172b7',
     },
