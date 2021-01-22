@@ -15,7 +15,7 @@ So, the code avaiable here may differ from the original, which can be found [HER
 - [x] Commit pattern (git-commit-msg-linter)
 - [x] Husky and lint-staged
 - [x] Tests implementation
-- [ ] CI (CircleCI or GH Actions)
-- [ ] CD (Heroku, Vercel or Netlify)
+- [x] CI (CircleCI)
+- [x] CD (Heroku)
 
 [gobarber-rocketseat]: https://github.com/rocketseat-education/bootcamp-gostack-modulos/tree/master/nivel-03/02-iniciando-o-front-end-web
