@@ -1,7 +1,7 @@
 import styled, { keyframes } from 'styled-components'
 import { shade } from 'polished'
 
-import signInBgImg from '../../assets/sign-in-background.png'
+import signInBgImg from 'assets/sign-in-background.png'
 
 export const Container = styled.div`
   height: 100vh;
@@ -20,6 +20,7 @@ export const Content = styled.div`
   width: 100%;
   max-width: 700px;
 `
+
 const appearFromLeft = keyframes`
   from {
     opacity: 0;
@@ -82,6 +83,7 @@ export const AnimatedContainer = styled.div`
     }
   }
 `
+
 const appear = keyframes`
   from {
     opacity: 0;

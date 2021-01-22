@@ -12,6 +12,7 @@
     "axios": "^0.19.2",
     "polished": "^3.6.4",
     "react": "^16.13.1",
+    "react-app-rewired": "^2.1.8",
     "react-dom": "^16.13.1",
     "react-icons": "^3.10.0",
     "react-router-dom": "^5.2.0",
@@ -52,15 +53,17 @@
     "react-test-renderer": "^17.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "prettify": "prettier --check 'src/**/*.{ts,tsx,js,jsx,json}' --write",
-    "pretest": "react-scripts test --clearCache",
-    "test": "react-scripts test --watchAll=false --runInBand",
-    "test:watch": "react-scripts test --coverage",
-    "test:changed": "react-scripts test --clearCache && yarn test -o --passWithNoTests",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "eject": "react-app-rewired eject",
+    "lint": "eslint src --ext \"js,ts,tsx\" --cache",
+    "prettify": "prettier --check \"src/**/*.{ts,tsx,js,jsx,json}\" --write",
+    "pretest": "react-app-rewired test --clearCache",
+    "test": "react-app-rewired test --watchAll=false --runInBand",
+    "test:watch": "yarn test --watch",
+    "test:changed": "yarn test -o --passWithNoTests",
     "test:coverage": "yarn test --coverage",
-    "eject": "react-scripts eject"
+    "test:ci": "TZ=America/Fortaleza yarn test --ci --runInBand --collectCoverage --passWithNoTests"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -79,7 +82,24 @@
   },
   "jest": {
     "moduleNameMapper": {
-      "^react-spring(.*)$": "<rootDir>/__mocks__/react-spring-mock.js"
-    }
+      "^react-spring(.*)$": "<rootDir>/__mocks__/react-spring-mock.js",
+      "^src/(.*)$": "<rootDir>/src/$1",
+      "^assets/(.*)$": "<rootDir>/src/assets/$1",
+      "^components/(.*)$": "<rootDir>/src/components/$1",
+      "^config/(.*)$": "<rootDir>/src/config/$1",
+      "^hooks/(.*)$": "<rootDir>/src/hooks/$1",
+      "^pages/(.*)$": "<rootDir>/src/pages/$1",
+      "^routes/(.*)$": "<rootDir>/src/routes/$1",
+      "^services/(.*)$": "<rootDir>/src/services/$1",
+      "^styles/(.*)$": "<rootDir>/src/styles/$1",
+      "^utils/(.*)$": "<rootDir>/src/utils/$1",
+      "^hooks": "<rootDir>/src/hooks"
+    },
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "(styles|types).ts",
+      "src/index.tsx",
+      "src/components/index.ts"
+    ]
   }
 }

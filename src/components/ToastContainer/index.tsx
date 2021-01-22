@@ -2,7 +2,6 @@ import React from 'react'
 import { useTransition } from 'react-spring'
 
 import Toast from '../Toast'
-
 import { Container } from './styles'
 import { ToastContainerProps } from './types'
 

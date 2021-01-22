@@ -5,14 +5,14 @@ import { FormHandles } from '@unform/core'
 import { Link, useHistory } from 'react-router-dom'
 import * as Yup from 'yup'
 
-import logoImg from '../../assets/logo.svg'
+import Input from 'components/Input'
+import logoImg from 'assets/logo.svg'
+import Button from 'components/Button'
+import getValidationErrors from 'utils/getValidationErrors'
+import { Api } from 'services/api'
+import { useToast } from 'hooks/ToastContext'
 
 import { Container, Content, Background, AnimatedContainer } from './styles'
-import Input from '../../components/Input'
-import Button from '../../components/Button'
-import getValidationErrors from '../../utils/getValidationErrors'
-import { Api } from '../../services/api'
-import { useToast } from '../../hooks/ToastContext'
 import { SignUpFormData } from './types'
 
 const SignUp: React.FC = () => {
