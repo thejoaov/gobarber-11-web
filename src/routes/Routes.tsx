@@ -1,6 +1,7 @@
 import React from 'react'
 import { Route as ReactRouterDOMRoute, Redirect } from 'react-router-dom'
-import { useAuth } from '../hooks/AuthContext'
+
+import { useAuth } from 'hooks/AuthContext'
 import { RouteProps } from './types'
 
 const Route: React.FC<RouteProps> = ({ isPrivate = false, component: Component, ...props }) => {

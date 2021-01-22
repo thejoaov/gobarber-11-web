@@ -5,14 +5,15 @@ import { FormHandles } from '@unform/core'
 import { Link, useHistory } from 'react-router-dom'
 import * as Yup from 'yup'
 
+import { useToast } from 'hooks/ToastContext'
+import Input from 'components/Input'
+import Button from 'components/Button'
+import logoImg from 'assets/logo.svg'
+import getValidationErrors from 'utils/getValidationErrors'
+import { useAuth } from 'hooks/AuthContext'
+
 import { Container, Content, Background, AnimatedContainer } from './styles'
-import Input from '../../components/Input'
-import Button from '../../components/Button'
-import logoImg from '../../assets/logo.svg'
-import getValidationErrors from '../../utils/getValidationErrors'
-import { useAuth } from '../../hooks/AuthContext'
 import { SignInFormData } from './types'
-import { useToast } from '../../hooks/ToastContext'
 
 const SignIn: React.FC = () => {
   const [errorCount, setErrorCount] = useState(0)

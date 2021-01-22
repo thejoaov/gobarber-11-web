@@ -3,11 +3,12 @@ import React from 'react'
 import { ReactTestRenderer, act, create } from 'react-test-renderer'
 import { ThemeProvider } from 'styled-components'
 
+import theme from 'styles/theme'
+import GlobalStyle from 'styles/global'
+import { findByTestID } from 'config/testConfig'
+
 import Toast from '..'
-import theme from '../../../styles/theme'
-import GlobalStyle from '../../../styles/global'
 import { ToastProps } from '../types'
-import { findByTestID } from '../../../config/testConfig'
 
 let wrapper: ReactTestRenderer
 let initialProps: ToastProps = {

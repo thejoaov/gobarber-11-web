@@ -1,6 +1,6 @@
 import React, { createContext, useCallback, useContext, useState } from 'react'
-import { Api } from '../../services/api'
-import { Storage } from '../../services/storage'
+import { Api } from 'services/api'
+import { Storage } from 'services/storage'
 import { AuthContextData, AuthState } from './types'
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData)
