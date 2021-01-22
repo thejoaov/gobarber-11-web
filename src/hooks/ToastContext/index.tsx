@@ -22,6 +22,7 @@ export const ToastProvider: React.FC = ({ children }) => {
       },
     ])
   }, [])
+
   const removeToast = useCallback((id: string) => {
     setToasts(state => state.filter(message => message.id !== id))
   }, [])
