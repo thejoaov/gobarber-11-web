@@ -1,7 +1,11 @@
 <div align="center">
 <img src="./src/assets/logo.svg" height="300" />
 
-<h2 style="color:#777">Front End Web</h2>
+<h2><a href="https://gobarber-11-web.herokuapp.com/" style="color:#777">Front End Web</a></h2>
+
+[![CircleCI][circleci-img]][circleci-url]
+[![codecov][codecov-badge]][codecov-badge-url]
+[![Heroku][heroku-badge]][heroku-badge-url]
 
 
 </div>
@@ -19,3 +23,9 @@ So, the code avaiable here may differ from the original, which can be found [HER
 - [x] CD (Heroku)
 
 [gobarber-rocketseat]: https://github.com/rocketseat-education/bootcamp-gostack-modulos/tree/master/nivel-03/02-iniciando-o-front-end-web
+[circleci-img]: https://circleci.com/gh/thejoaov/gobarber-11-web/tree/main.svg?style=svg
+[circleci-url]: https://circleci.com/gh/thejoaov/gobarber-11-web/tree/main
+[codecov-badge]: https://codecov.io/gh/thejoaov/gobarber-11-web/branch/main/graph/badge.svg
+[codecov-badge-url]: https://codecov.io/gh/thejoaov/gobarber-11-web
+[heroku-badge]: https://heroku-badge.herokuapp.com/?app=gobarber-11-web&svg=1
+[heroku-badge-url]: https://https://gobarber-11-web.herokuapp.com
