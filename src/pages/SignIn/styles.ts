@@ -20,6 +20,7 @@ export const Content = styled.div`
   width: 100%;
   max-width: 700px;
 `
+
 const appearFromLeft = keyframes`
   from {
     opacity: 0;
@@ -82,6 +83,7 @@ export const AnimatedContainer = styled.div`
     }
   }
 `
+
 const appear = keyframes`
   from {
     opacity: 0;
