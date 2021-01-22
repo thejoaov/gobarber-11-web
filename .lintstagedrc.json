@@ -1,3 +1,3 @@
 {
-  "*.{ts,tsx,js,jsx,json}": ["yarn prettify", "eslint 'src/**' --fix"]
+  "*.{ts,tsx,js,jsx,json}": ["yarn prettify", "yarn lint"]
 }

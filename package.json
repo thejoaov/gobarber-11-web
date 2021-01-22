@@ -59,6 +59,7 @@
     "test": "react-scripts test --watchAll=false --runInBand",
     "test:watch": "react-scripts test --coverage",
     "test:changed": "react-scripts test --clearCache && yarn test -o --passWithNoTests",
+    "lint": "eslint src --ext \"js,ts,tsx\" --cache",
     "test:coverage": "yarn test --coverage",
     "eject": "react-scripts eject"
   },
