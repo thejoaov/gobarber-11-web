@@ -83,17 +83,17 @@
   "jest": {
     "moduleNameMapper": {
       "^react-spring(.*)$": "<rootDir>/__mocks__/react-spring-mock.js",
-      "^src/(.*)$": "<rootDir>/src/$1",
-      "^assets/(.*)$": "<rootDir>/src/assets/$1",
-      "^components/(.*)$": "<rootDir>/src/components/$1",
-      "^config/(.*)$": "<rootDir>/src/config/$1",
-      "^hooks/(.*)$": "<rootDir>/src/hooks/$1",
-      "^pages/(.*)$": "<rootDir>/src/pages/$1",
-      "^routes/(.*)$": "<rootDir>/src/routes/$1",
-      "^services/(.*)$": "<rootDir>/src/services/$1",
-      "^styles/(.*)$": "<rootDir>/src/styles/$1",
-      "^utils/(.*)$": "<rootDir>/src/utils/$1",
-      "^hooks": "<rootDir>/src/hooks"
+      "^@src/(.*)$": "<rootDir>/src/$1",
+      "^@assets/(.*)$": "<rootDir>/src/assets/$1",
+      "^@components": "<rootDir>/src/components",
+      "^@config/(.*)$": "<rootDir>/src/config/$1",
+      "^@hooks/(.*)$": "<rootDir>/src/hooks/$1",
+      "^@pages/(.*)$": "<rootDir>/src/pages/$1",
+      "^@routes/(.*)$": "<rootDir>/src/routes/$1",
+      "^@services/(.*)$": "<rootDir>/src/services/$1",
+      "^@styles/(.*)$": "<rootDir>/src/styles/$1",
+      "^@utils/(.*)$": "<rootDir>/src/utils/$1",
+      "^@hooks": "<rootDir>/src/hooks"
     },
     "coveragePathIgnorePatterns": [
       "/node_modules/",
