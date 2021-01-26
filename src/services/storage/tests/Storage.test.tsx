@@ -28,10 +28,15 @@ describe('Storage service test suite', () => {
 
       expect(localStorage.setItem).toBeCalledTimes(items.length)
       items.forEach(item => {
-        expect(localStorage.setItem).toBeCalledWith(`@gobarber:${item.name}`, JSON.stringify(item.data))
+        expect(localStorage.setItem).toBeCalledWith(
+          `@gobarber:${item.name}`,
+          JSON.stringify(item.data),
+        )
       })
       items.forEach(item => {
-        expect(JSON.parse(localStorage.getItem(`@gobarber:${item.name}`) as string)).toEqual(item.data)
+        expect(JSON.parse(localStorage.getItem(`@gobarber:${item.name}`) as string)).toEqual(
+          item.data,
+        )
       })
     })
   })

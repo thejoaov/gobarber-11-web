@@ -39,7 +39,11 @@ export const AuthProvider: React.FC = ({ children }) => {
     setData({} as AuthState)
   }, [])
 
-  return <AuthContext.Provider value={{ user: data.user, signIn, signOut }}>{children}</AuthContext.Provider>
+  return (
+    <AuthContext.Provider value={{ user: data.user, signIn, signOut }}>
+      {children}
+    </AuthContext.Provider>
+  )
 }
 
 export const useAuth = (): AuthContextData => {

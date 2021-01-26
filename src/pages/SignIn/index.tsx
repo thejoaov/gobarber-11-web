@@ -30,7 +30,9 @@ const SignIn: React.FC = () => {
 
         const schema = Yup.object().shape({
           email: Yup.string().required('Email obrigatório').email('Digite um email válido'),
-          password: Yup.string().min(6, 'Senha de no mínimo 6 caracteres').required('Senha obrigatória'),
+          password: Yup.string()
+            .min(6, 'Senha de no mínimo 6 caracteres')
+            .required('Senha obrigatória'),
         })
 
         await schema.validate(data, {
@@ -61,7 +63,8 @@ const SignIn: React.FC = () => {
         if (errorCount >= 3) {
           addToast({
             title: 'Está com problemas?',
-            description: 'Você está com problemas no login? Tente redefinir sua senha em "Esqueci minha senha".',
+            description:
+              'Você está com problemas no login? Tente redefinir sua senha em "Esqueci minha senha".',
             type: 'warning',
           })
         }
@@ -78,9 +81,21 @@ const SignIn: React.FC = () => {
           <Form onSubmit={handleSubmit} ref={formRef}>
             <h1>Faça seu logon</h1>
 
-            <Input icon={FiMail} name="email" type="email" placeholder="Email" testID="input-email" />
+            <Input
+              icon={FiMail}
+              name="email"
+              type="email"
+              placeholder="Email"
+              testID="input-email"
+            />
 
-            <Input icon={FiLock} name="password" type="password" placeholder="Senha" testID="input-password" />
+            <Input
+              icon={FiLock}
+              name="password"
+              type="password"
+              placeholder="Senha"
+              testID="input-password"
+            />
 
             <Button type="submit" testID="submit-button">
               Entrar

@@ -72,8 +72,20 @@ const SignUp: React.FC = () => {
             <h1>Faça seu cadastro</h1>
 
             <Input testID="input-name" icon={FiUser} name="name" placeholder="Nome" />
-            <Input testID="input-email" icon={FiMail} name="email" type="email" placeholder="Email" />
-            <Input testID="input-password" icon={FiLock} name="password" type="password" placeholder="Senha" />
+            <Input
+              testID="input-email"
+              icon={FiMail}
+              name="email"
+              type="email"
+              placeholder="Email"
+            />
+            <Input
+              testID="input-password"
+              icon={FiLock}
+              name="password"
+              type="password"
+              placeholder="Senha"
+            />
 
             <Button testID="submit-button" type="submit">
               Cadastrar

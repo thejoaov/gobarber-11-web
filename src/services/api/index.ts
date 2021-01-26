@@ -14,7 +14,15 @@ export const Api = {
   /**
    * Send a request to sign up
    */
-  signUp: ({ name, email, password }: { name: string; email: string; password: string }): AxiosPromise<any> =>
+  signUp: ({
+    name,
+    email,
+    password,
+  }: {
+    name: string
+    email: string
+    password: string
+  }): AxiosPromise<any> =>
     API.post('users', {
       name,
       password,

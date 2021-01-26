@@ -2,7 +2,10 @@ import { transparentize } from 'polished'
 import { animated } from 'react-spring'
 import styled from 'styled-components'
 
-export const Container = styled(animated.div)<{ testID: string; type: 'success' | 'warning' | 'error' | 'info' }>`
+export const Container = styled(animated.div)<{
+  testID: string
+  type: 'success' | 'warning' | 'error' | 'info'
+}>`
   width: 360px;
   position: relative;
   padding: 16px 30px 16px 16px;
