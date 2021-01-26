@@ -49,4 +49,9 @@ const Input: React.FC<InputProps> = ({ name, icon: Icon, ...props }) => {
     </Container>
   )
 }
+
+Input.defaultProps = {
+  testID: 'input',
+}
+
 export default Input

@@ -1,15 +1,15 @@
 import { Api } from '..'
-import { ApiConfig } from '../ApiConfig'
+import { API } from '../config'
 
 const fakeResponse = { data: {}, status: 200 }
 
 describe('Api service test suite', () => {
   beforeEach(() => {
-    jest.spyOn(ApiConfig, 'get').mockResolvedValue(fakeResponse)
-    jest.spyOn(ApiConfig, 'post').mockResolvedValue(fakeResponse)
-    jest.spyOn(ApiConfig, 'delete').mockResolvedValue(fakeResponse)
-    jest.spyOn(ApiConfig, 'put').mockResolvedValue(fakeResponse)
-    jest.spyOn(ApiConfig, 'patch').mockResolvedValue(fakeResponse)
+    jest.spyOn(API, 'get').mockResolvedValue(fakeResponse)
+    jest.spyOn(API, 'post').mockResolvedValue(fakeResponse)
+    jest.spyOn(API, 'delete').mockResolvedValue(fakeResponse)
+    jest.spyOn(API, 'put').mockResolvedValue(fakeResponse)
+    jest.spyOn(API, 'patch').mockResolvedValue(fakeResponse)
   })
 
   it('should define all functions', () => {

@@ -13,10 +13,10 @@
 // import { ThemeProvider } from 'styled-components';
 
 // import Input from '..';
-// import theme from 'styles/theme';
-// import GlobalStyle from 'styles/global';
-// import { findByTestID } from 'config/testConfig';
-// import { AuthProvider } from 'hooks/AuthContext';
+// import theme from '@styles/theme';
+// import GlobalStyle from '@styles/global';
+// import { findByTestID } from '@config/testConfig';
+// import { AuthProvider } from '@hooks/AuthContext';
 // import ToastContainer from 'ToastContainer';
 // import { InputProps } from '../types';
 

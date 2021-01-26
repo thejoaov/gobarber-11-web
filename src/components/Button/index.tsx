@@ -8,4 +8,8 @@ const Button: React.FC<ButtonProps> = ({ children, ...props }) => (
   </Container>
 )
 
+Button.defaultProps = {
+  testID: 'button',
+}
+
 export default Button

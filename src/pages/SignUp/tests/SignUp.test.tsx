@@ -3,9 +3,9 @@ import { ReactTestRenderer, act, create } from 'react-test-renderer'
 import { ThemeProvider } from 'styled-components'
 import { BrowserRouter } from 'react-router-dom'
 
-import theme from 'styles/theme'
-import GlobalStyle from 'styles/global'
-import ContextProvider from 'hooks'
+import theme from '@styles/theme'
+import GlobalStyle from '@styles/global'
+import ContextProvider from '@hooks'
 import SignUp from '..'
 
 let wrapper: ReactTestRenderer

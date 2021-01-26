@@ -1,7 +1,7 @@
 import React, { createContext, useCallback, useContext, useState } from 'react'
 import { v4 as uuid } from 'uuid'
 
-import ToastContainer from 'components/ToastContainer'
+import { ToastContainer } from '@components'
 import { ToastContextData, ToastMessage } from './types'
 
 const ToastContext = createContext<ToastContextData>({} as ToastContextData)
