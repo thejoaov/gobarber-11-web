@@ -8,18 +8,15 @@ import ContextProvider from './hooks'
 import theme from './styles/theme'
 import Routes from './routes'
 
-const App: React.FC = () => {
-  // test
-  return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <ContextProvider>
-        <BrowserRouter>
-          <Routes />
-        </BrowserRouter>
-      </ContextProvider>
-    </ThemeProvider>
-  )
-}
+const App: React.FC = () => (
+  <ThemeProvider theme={theme}>
+    <GlobalStyle />
+    <ContextProvider>
+      <BrowserRouter>
+        <Routes />
+      </BrowserRouter>
+    </ContextProvider>
+  </ThemeProvider>
+)
 
 export default App
