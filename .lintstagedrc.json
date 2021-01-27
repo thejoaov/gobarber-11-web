@@ -1,4 +1,3 @@
 {
-  "./*.{ts,tsx,js,jsx,json}": ["yarn prettify"],
-  "src/**/*.{ts,tsx,js,jsx,json}": ["yarn prettify", "yarn lint"]
+  "./**/*.{ts,tsx,js,jsx,json}": ["yarn prettify", "yarn lint"]
 }
