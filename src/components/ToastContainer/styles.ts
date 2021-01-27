@@ -1,6 +1,7 @@
 import styled from 'styled-components'
+import { ToastContainerProps } from './types'
 
-export const Container = styled.div<{ testID: string }>`
+export const Container = styled.div<ToastContainerProps>`
   position: absolute;
   top: 0;
   right: 0;

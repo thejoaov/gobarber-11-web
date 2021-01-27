@@ -5,26 +5,27 @@ import { BrowserRouter } from 'react-router-dom'
 
 import theme from '@styles/theme'
 import GlobalStyle from '@styles/global'
+// import { findByTestID } from '@config/testConfig'
 import ContextProvider from '@hooks'
-import SignUp from '..'
+import Dashboard from '..'
 
 let wrapper: ReactTestRenderer
 
-const SignUpMock: React.FC = () => (
+const DashboardMock: React.FC = () => (
   <ThemeProvider theme={theme}>
     <GlobalStyle />
-    <ContextProvider>
-      <BrowserRouter>
-        <SignUp />
-      </BrowserRouter>
-    </ContextProvider>
+    <BrowserRouter>
+      <ContextProvider>
+        <Dashboard />
+      </ContextProvider>
+    </BrowserRouter>
   </ThemeProvider>
 )
 
-describe('SignUp test suite', () => {
+describe('Dashboard test suite', () => {
   beforeEach(() => {
     act(() => {
-      wrapper = create(<SignUpMock />)
+      wrapper = create(<DashboardMock />)
     })
   })
 

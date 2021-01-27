@@ -8,25 +8,24 @@ import GlobalStyle from '@styles/global'
 import { findByTestID } from '@config/testConfig'
 
 import Toast from '..'
-import { ToastProps } from '../types'
+import { Props } from '../types'
 
 let wrapper: ReactTestRenderer
-let initialProps: ToastProps = {
-  testID: 'toast',
+let initialProps: Props = {
   toast: { id: '1', title: 'test', type: 'success', description: 'test' },
 }
 
-const ToastMock: React.FC = () => (
+const ToastMock: React.FC<Props> = props => (
   <ThemeProvider theme={theme}>
     <GlobalStyle />
-    <Toast {...initialProps} />
+    <Toast {...props} />
   </ThemeProvider>
 )
 
 describe('Toast test suite', () => {
-  beforeEach(async () => {
-    await act(async () => {
-      wrapper = create(<ToastMock />)
+  beforeEach(() => {
+    act(() => {
+      wrapper = create(<ToastMock {...initialProps} />)
     })
   })
 
@@ -34,14 +33,13 @@ describe('Toast test suite', () => {
     expect(wrapper).toBeTruthy()
   })
 
-  it('should render with different props', async () => {
-    const testID = 'toast-error-2'
+  it('should render error toast', async () => {
     const testInstance = wrapper.root
+    const props: Props = { ...initialProps, toast: { ...initialProps.toast, type: 'error' } }
 
-    initialProps = { testID, toast: { ...initialProps.toast, type: 'error', id: '2' } }
-    await wrapper.update(<ToastMock />)
+    await wrapper.update(<ToastMock {...props} />)
 
-    const toast = findByTestID(testInstance, testID)
+    const toast = findByTestID(testInstance, 'toast-error-1')
     expect(toast).toBeTruthy()
   })
 })

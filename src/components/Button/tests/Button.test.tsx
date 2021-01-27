@@ -5,13 +5,13 @@ import { ThemeProvider } from 'styled-components'
 
 import theme from '@styles/theme'
 import GlobalStyle from '@styles/global'
-// import { findByTestID } from '@config/testConfig'
+import { findByTestID } from '@config/testConfig'
 import Button from '..'
 
-import { ButtonProps } from '../types'
+import { Props } from '../types'
 
 let wrapper: ReactTestRenderer
-let initialProps: ButtonProps = { name: 'test', testID: 'Button' }
+let initialProps: Props = { name: 'test', testID: 'Button' }
 
 const ButtonMock: React.FC = () => (
   <ThemeProvider theme={theme}>
@@ -21,13 +21,23 @@ const ButtonMock: React.FC = () => (
 )
 
 describe('Button test suite', () => {
-  beforeEach(async () => {
-    await act(async () => {
+  beforeEach(() => {
+    act(() => {
       wrapper = create(<ButtonMock />)
     })
   })
 
   it('should render without explode', () => {
     expect(wrapper).toBeTruthy()
+  })
+
+  it('should render with loading indicator when loading = true', async () => {
+    const testInstance = wrapper.root
+
+    initialProps = { ...initialProps, loading: true }
+    await wrapper.update(<ButtonMock />)
+
+    const toast = findByTestID(testInstance, 'activity-indicator')
+    expect(toast).toBeTruthy()
   })
 })

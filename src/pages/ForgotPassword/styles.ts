@@ -16,7 +16,6 @@ export const Content = styled.div`
   justify-content: center;
   width: 100%;
   max-width: 700px;
-  }
 `
 
 const appearFromLeft = keyframes`

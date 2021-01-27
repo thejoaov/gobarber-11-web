@@ -15,11 +15,12 @@ describe('Api service test suite', () => {
   it('should define all functions', () => {
     expect(Api.login).toBeDefined()
     expect(Api.signUp).toBeDefined()
+    expect(Api.forgotPassword).toBeDefined()
   })
 
   describe('login', () => {
     it('should request sign in user', async () => {
-      const email = 'hermann.kaulke@lebsack.com'
+      const email = 'naruto.uzumaki@fakemail.com'
       const password = '123456'
 
       await expect(Api.login({ email, password })).resolves.toEqual(fakeResponse)
@@ -29,10 +30,18 @@ describe('Api service test suite', () => {
   describe('signup', () => {
     it('should request sign up user', async () => {
       const name = 'naruto uzumaki'
-      const email = 'hermann.kaulke@lebsack.com'
+      const email = 'naruto.uzumaki@fakemail.com'
       const password = '123456'
 
       await expect(Api.signUp({ name, email, password })).resolves.toEqual(fakeResponse)
+    })
+  })
+
+  describe('forgotPassword', () => {
+    it('should request sign in user', async () => {
+      const email = 'naruto.uzumaki@fakemail.com'
+
+      await expect(Api.forgotPassword(email)).resolves.toEqual(fakeResponse)
     })
   })
 })

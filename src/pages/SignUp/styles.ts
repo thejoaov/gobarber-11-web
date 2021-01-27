@@ -53,20 +53,20 @@ export const AnimatedContainer = styled.div`
     }
 
     a {
-      color: ${({ theme }) => theme.colors.gray[0]};
+      color: ${({ theme }) => theme.colors.white};
       display: block;
       margin-top: 24px;
       text-decoration: none;
       transition: color 0.2s;
 
       &:hover {
-        color: ${({ theme }) => shade(0.2, theme.colors.gray[0])};
+        color: ${({ theme }) => shade(0.2, theme.colors.white)};
       }
     }
   }
 
   > a {
-    color: ${({ theme }) => theme.colors.gray[0]};
+    color: ${({ theme }) => theme.colors.white};
     display: block;
     margin-top: 24px;
     text-decoration: none;
@@ -80,7 +80,7 @@ export const AnimatedContainer = styled.div`
     }
 
     &:hover {
-      color: ${({ theme }) => shade(0.2, theme.colors.gray[0])};
+      color: ${({ theme }) => shade(0.2, theme.colors.white)};
     }
   }
 `

@@ -1,5 +1,7 @@
-export interface TooltipProps {
-  title: string
+export type TooltipProps = {
+  title?: string
   className?: string
-  testID: string
+  testID?: string
 }
+
+export type Props = TooltipProps

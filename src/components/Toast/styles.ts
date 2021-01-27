@@ -1,18 +1,18 @@
 import { transparentize } from 'polished'
 import { animated } from 'react-spring'
 import styled from 'styled-components'
+import { ToastProps } from './types'
 
-export const Container = styled(animated.div)<{
-  testID: string
-  type: 'success' | 'warning' | 'error' | 'info'
-}>`
+export const Container = styled(animated.div)<ToastProps>`
   width: 360px;
   position: relative;
   padding: 16px 30px 16px 16px;
   border-radius: 10px;
-  box-shadow: 2px 2px 8px ${({ theme, type }) => transparentize(0.4, theme.colors.semantic[type])};
+  box-shadow: 2px 2px 8px
+    ${({ theme, toast }) => transparentize(0.4, theme.colors.semantic[toast?.type || 'info'])};
   display: flex;
-  background: ${({ theme, type }) => transparentize(0.1, theme.colors.semantic[type])};
+  background: ${({ theme, toast }) =>
+    transparentize(0.05, theme.colors.semantic[toast?.type || 'info'])};
   color: ${({ theme }) => theme.colors.white};
 
   > svg {

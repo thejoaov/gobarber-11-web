@@ -20,8 +20,8 @@ const TooltipMock: React.FC = () => (
 )
 
 describe('Tooltip test suite', () => {
-  beforeEach(async () => {
-    await act(async () => {
+  beforeEach(() => {
+    act(() => {
       wrapper = create(<TooltipMock />)
     })
   })

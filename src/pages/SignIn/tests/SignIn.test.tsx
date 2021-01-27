@@ -23,8 +23,8 @@ const SignInMock: React.FC = () => (
 )
 
 describe('SignIn test suite', () => {
-  beforeEach(async () => {
-    await act(async () => {
+  beforeEach(() => {
+    act(() => {
       wrapper = create(<SignInMock />)
     })
   })

@@ -4,20 +4,20 @@ import { FiAlertTriangle, FiCheckCircle, FiInfo, FiXCircle, FiXOctagon } from 'r
 
 import { useToast } from '@hooks/ToastContext'
 import { Container } from './styles'
-import { ToastProps } from './types'
+import { Props } from './types'
 
-const Toast: React.FC<ToastProps> = ({ toast, toast: { type = 'info' }, ...props }) => {
+const Toast: React.FC<Props> = ({ toast, ...props }) => {
   const { removeToast } = useToast()
 
   useEffect(() => {
     const timer = setTimeout(() => {
       removeToast(toast.id)
-    }, 3000)
+    }, toast?.timeout || 3000)
 
     return () => {
       clearTimeout(timer)
     }
-  }, [toast.id, removeToast])
+  }, [toast, removeToast])
 
   const getIcon = (): JSX.Element => {
     const icons = {
@@ -27,17 +27,17 @@ const Toast: React.FC<ToastProps> = ({ toast, toast: { type = 'info' }, ...props
       error: <FiXOctagon size={24} />,
     }
 
-    return icons[type]
+    return icons[toast?.type || 'info']
   }
 
   return (
-    <Container testID={props.testID || `toast-${type}-${toast.id}`} type={type} style={props.style}>
+    <Container toast={toast} testID={`toast-${toast?.type || 'info'}-${toast?.id}`} {...props}>
       {getIcon()}
 
       <div>
-        <strong>{toast.title}</strong>
+        <strong>{toast?.title}</strong>
 
-        {!!toast.description && <p>{toast.description}</p>}
+        {!!toast?.description && <p>{toast?.description}</p>}
 
         <button type="button" onClick={() => removeToast(toast.id)}>
           <FiXCircle size={18} />

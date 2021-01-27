@@ -6,7 +6,7 @@ export const Api = {
    * Send a request to login
    */
   login: ({ email, password }: { email: string; password: string }): AxiosPromise<any> =>
-    API.post('sessions', {
+    API.post('/sessions', {
       password,
       email,
     }),
@@ -23,9 +23,17 @@ export const Api = {
     email: string
     password: string
   }): AxiosPromise<any> =>
-    API.post('users', {
+    API.post('/users', {
       name,
       password,
+      email,
+    }),
+
+  /**
+   * Send a request to forgotPassword
+   */
+  forgotPassword: (email: string): AxiosPromise<void> =>
+    API.post('/password/forgot', {
       email,
     }),
 }

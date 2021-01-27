@@ -7,6 +7,9 @@ export type ToastProps = {
     title: string
     type?: 'success' | 'error' | 'info' | 'warning'
     description?: string
+    timeout?: number
   }
   style?: CSSProperties
 }
+
+export type Props = ToastProps

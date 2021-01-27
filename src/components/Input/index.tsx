@@ -1,14 +1,16 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react'
 import { FiAlertCircle } from 'react-icons/fi'
 import { useField } from '@unform/core'
+import { useTheme } from 'styled-components'
 
 import { Container, Error } from './styles'
-import { InputProps } from './types'
+import { Props } from './types'
 
-const Input: React.FC<InputProps> = ({ name, icon: Icon, ...props }) => {
+const Input: React.FC<Props> = ({ name, icon: Icon, ...props }) => {
   const inputRef = useRef<HTMLInputElement>(null)
   const [isFocused, setIsFocused] = useState(false)
   const [isFilled, setIsFilled] = useState(false)
+  const theme = useTheme()
 
   const { fieldName, error, defaultValue, registerField } = useField(name)
 
@@ -43,7 +45,7 @@ const Input: React.FC<InputProps> = ({ name, icon: Icon, ...props }) => {
 
       {error && (
         <Error title={error} testID="tooltip-error">
-          <FiAlertCircle color="#c53030" size={20} />
+          <FiAlertCircle color={theme.colors.semantic.error} size={20} />
         </Error>
       )}
     </Container>

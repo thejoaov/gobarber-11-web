@@ -1,30 +1,29 @@
+/* eslint-disable prefer-const */
 import React from 'react'
 import { ReactTestRenderer, act, create } from 'react-test-renderer'
 import { ThemeProvider } from 'styled-components'
-import { BrowserRouter } from 'react-router-dom'
 
 import theme from '@styles/theme'
 import GlobalStyle from '@styles/global'
-import ContextProvider from '@hooks'
-import SignUp from '..'
+// import { findByTestID } from '@config/testConfig'
+import ActivityIndicator from '..'
+
+import { Props } from '../types'
 
 let wrapper: ReactTestRenderer
+let initialProps: Props = { testID: 'activity-indicator' }
 
-const SignUpMock: React.FC = () => (
+const ActivityIndicatorMock: React.FC = () => (
   <ThemeProvider theme={theme}>
     <GlobalStyle />
-    <ContextProvider>
-      <BrowserRouter>
-        <SignUp />
-      </BrowserRouter>
-    </ContextProvider>
+    <ActivityIndicator {...initialProps} />
   </ThemeProvider>
 )
 
-describe('SignUp test suite', () => {
+describe('ActivityIndicator test suite', () => {
   beforeEach(() => {
     act(() => {
-      wrapper = create(<SignUpMock />)
+      wrapper = create(<ActivityIndicatorMock />)
     })
   })
 
