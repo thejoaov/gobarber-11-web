@@ -62,10 +62,10 @@ const SignIn: React.FC = () => {
 
         if (errorCount >= 3) {
           addToast({
-            title: 'Está com problemas?',
-            description:
-              'Você está com problemas no login? Tente redefinir sua senha em "Esqueci minha senha".',
+            title: 'Problemas no login? 😅',
+            description: 'Redefina sua senha clicando aqui',
             type: 'warning',
+            onClick: () => history.push('/forgot-password'),
           })
         }
       }

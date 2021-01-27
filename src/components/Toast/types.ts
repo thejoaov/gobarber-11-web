@@ -8,6 +8,10 @@ export type ToastProps = {
     type?: 'success' | 'error' | 'info' | 'warning'
     description?: string
     timeout?: number
+    /** Callback passed when toast is unmounted */
+    callback?<T>(): T | any
+    /** onClick action */
+    onClick?(): void
   }
   style?: CSSProperties
 }

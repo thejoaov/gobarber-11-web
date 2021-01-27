@@ -10,7 +10,7 @@ export const ToastProvider: React.FC = ({ children }) => {
   const [toasts, setToasts] = useState<ToastMessage[]>([])
 
   const addToast = useCallback(
-    ({ type, title, description, timeout = 3000 }: Omit<ToastMessage, 'id'>) => {
+    ({ type, title, description, callback, onClick, timeout = 3000 }: Omit<ToastMessage, 'id'>) => {
       const id = uuid()
 
       setToasts(state => [
@@ -21,6 +21,8 @@ export const ToastProvider: React.FC = ({ children }) => {
           title,
           description,
           timeout,
+          callback,
+          onClick,
         },
       ])
     },

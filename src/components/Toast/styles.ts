@@ -9,11 +9,17 @@ export const Container = styled(animated.div)<ToastProps>`
   padding: 16px 30px 16px 16px;
   border-radius: 10px;
   box-shadow: 2px 2px 8px
-    ${({ theme, toast }) => transparentize(0.4, theme.colors.semantic[toast?.type || 'info'])};
+    ${({ theme, toast }) => transparentize(0.5, theme.colors.semantic[toast?.type || 'info'])};
   display: flex;
   background: ${({ theme, toast }) =>
-    transparentize(0.05, theme.colors.semantic[toast?.type || 'info'])};
+    transparentize(0.3, theme.colors.semantic[toast?.type || 'info'])};
   color: ${({ theme }) => theme.colors.white};
+
+  &:hover {
+    background: ${({ theme, toast }) => theme.colors.semantic[toast?.type || 'info']};
+    cursor: pointer;
+  }
+  transition: background 0.2s;
 
   > svg {
     margin: 4px 12px 0 0;

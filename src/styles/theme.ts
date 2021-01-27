@@ -47,10 +47,10 @@ const theme: DefaultTheme = {
       grayHard: '#666360',
     },
     semantic: {
-      success: '#00a99d',
-      warning: '#ff9000',
+      success: '#007633',
+      warning: '#6500b3',
       error: '#c53030',
-      info: '#3172b7',
+      info: '#214c7b',
     },
   },
   fonts: {

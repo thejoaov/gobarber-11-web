@@ -16,8 +16,16 @@ const Toast: React.FC<Props> = ({ toast, ...props }) => {
 
     return () => {
       clearTimeout(timer)
+      !!toast.callback && toast.callback()
     }
   }, [toast, removeToast])
+
+  const handleClick = (): void => {
+    if (toast.onClick) {
+      removeToast(toast.id)
+      toast.onClick()
+    }
+  }
 
   const getIcon = (): JSX.Element => {
     const icons = {
@@ -31,7 +39,11 @@ const Toast: React.FC<Props> = ({ toast, ...props }) => {
   }
 
   return (
-    <Container toast={toast} testID={`toast-${toast?.type || 'info'}-${toast?.id}`} {...props}>
+    <Container
+      {...props}
+      toast={toast}
+      testID={`toast-${toast?.type || 'info'}-${toast?.id}`}
+      onClick={handleClick}>
       {getIcon()}
 
       <div>

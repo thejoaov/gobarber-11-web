@@ -16,6 +16,7 @@ describe('Api service test suite', () => {
     expect(Api.login).toBeDefined()
     expect(Api.signUp).toBeDefined()
     expect(Api.forgotPassword).toBeDefined()
+    expect(Api.resetPassword).toBeDefined()
   })
 
   describe('login', () => {
@@ -42,6 +43,22 @@ describe('Api service test suite', () => {
       const email = 'naruto.uzumaki@fakemail.com'
 
       await expect(Api.forgotPassword(email)).resolves.toEqual(fakeResponse)
+    })
+  })
+
+  describe('resetPassword', () => {
+    it('should request sign in user', async () => {
+      const password = '123456'
+      const passwordConfirmation = '123456'
+      const token = 'token'
+
+      await expect(
+        Api.resetPassword({
+          token,
+          password,
+          passwordConfirmation,
+        }),
+      ).resolves.toEqual(fakeResponse)
     })
   })
 })
