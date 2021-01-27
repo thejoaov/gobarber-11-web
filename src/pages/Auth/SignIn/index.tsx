@@ -5,12 +5,12 @@ import { FormHandles } from '@unform/core'
 import { Link, useHistory } from 'react-router-dom'
 import * as Yup from 'yup'
 
-import { useToast } from 'hooks/ToastContext'
-import Input from 'components/Input'
-import Button from 'components/Button'
-import logoImg from 'assets/logo.svg'
-import getValidationErrors from 'utils/getValidationErrors'
-import { useAuth } from 'hooks/AuthContext'
+import { useToast } from '@hooks/ToastContext'
+import { Input, Button } from '@components'
+
+import logoImg from '@assets/logo.svg'
+import getValidationErrors from '@utils/getValidationErrors'
+import { useAuth } from '@hooks/AuthContext'
 
 import { Container, Content, Background, AnimatedContainer } from './styles'
 import { SignInFormData } from './types'
@@ -30,7 +30,9 @@ const SignIn: React.FC = () => {
 
         const schema = Yup.object().shape({
           email: Yup.string().required('Email obrigatório').email('Digite um email válido'),
-          password: Yup.string().min(6, 'Senha de no mínimo 6 caracteres').required('Senha obrigatória'),
+          password: Yup.string()
+            .min(6, 'Senha de no mínimo 6 caracteres')
+            .required('Senha obrigatória'),
         })
 
         await schema.validate(data, {
@@ -60,9 +62,10 @@ const SignIn: React.FC = () => {
 
         if (errorCount >= 3) {
           addToast({
-            title: 'Está com problemas?',
-            description: 'Você está com problemas no login? Tente redefinir sua senha em "Esqueci minha senha".',
+            title: 'Problemas no login? 😅',
+            description: 'Redefina sua senha clicando aqui',
             type: 'warning',
+            onClick: () => history.push('/forgot-password'),
           })
         }
       }
@@ -78,15 +81,27 @@ const SignIn: React.FC = () => {
           <Form onSubmit={handleSubmit} ref={formRef}>
             <h1>Faça seu logon</h1>
 
-            <Input icon={FiMail} name="email" type="email" placeholder="Email" testID="input-email" />
+            <Input
+              icon={FiMail}
+              name="email"
+              type="email"
+              placeholder="Email"
+              testID="input-email"
+            />
 
-            <Input icon={FiLock} name="password" type="password" placeholder="Senha" testID="input-password" />
+            <Input
+              icon={FiLock}
+              name="password"
+              type="password"
+              placeholder="Senha"
+              testID="input-password"
+            />
 
             <Button type="submit" testID="submit-button">
               Entrar
             </Button>
 
-            <a href="forgot">Esqueci minha senha</a>
+            <Link to="/forgot-password">Esqueci minha senha</Link>
           </Form>
 
           <Link to="/signup">

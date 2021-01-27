@@ -80,6 +80,9 @@ describe('getValidationErrors test suite', () => {
     const requiredError = getValidationErrors(mockErrorRequired)
 
     expect(requiredError).toBeTruthy()
-    expect(requiredError).toEqual({ email: 'error_required_email', password: 'error_required_password' })
+    expect(requiredError).toEqual({
+      email: 'error_required_email',
+      password: 'error_required_password',
+    })
   })
 })

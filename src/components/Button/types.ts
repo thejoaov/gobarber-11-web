@@ -1,5 +1,9 @@
 import { ButtonHTMLAttributes } from 'react'
 
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  testID: string
+export type ButtonProps = {
+  testID?: string
+  loading?: boolean
+  enabled?: boolean
 }
+
+export type Props = ButtonHTMLAttributes<HTMLButtonElement> & ButtonProps

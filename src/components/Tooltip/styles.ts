@@ -1,11 +1,12 @@
 import styled from 'styled-components'
+import { TooltipProps } from './types'
 
-export const Container = styled.div`
+export const Container = styled.div<TooltipProps>`
   position: relative;
 
   span {
     width: 160px;
-    background: #ff9000;
+    background: ${({ theme }) => theme.colors.primary};
     padding: 8px;
     border-radius: 4px;
     font-size: 14px;
@@ -22,7 +23,7 @@ export const Container = styled.div`
     &::before {
       content: '';
       border-style: solid;
-      border-color: #ff9000 transparent;
+      border-color: ${({ theme }) => theme.colors.primary} transparent;
       border-width: 6px 6px 0 6px;
       top: 100%;
       position: absolute;

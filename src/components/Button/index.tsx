@@ -1,11 +1,17 @@
 import React from 'react'
+import ActivityIndicator from '../ActivityIndicator'
 import { Container } from './styles'
-import { ButtonProps } from './types'
+import { Props } from './types'
 
-const Button: React.FC<ButtonProps> = ({ children, ...props }) => (
-  <Container type="button" {...props}>
-    {children}
+const Button: React.FC<Props> = ({ children, loading, ...props }) => (
+  <Container type="button" {...props} disabled={loading}>
+    {loading ? <ActivityIndicator /> : <>{children}</>}
   </Container>
 )
+
+Button.defaultProps = {
+  testID: 'button',
+  loading: false,
+}
 
 export default Button

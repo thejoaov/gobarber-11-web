@@ -8,12 +8,12 @@ interface ContainerProps {
 }
 
 export const Container = styled.div<ContainerProps>`
-  background: ${({ theme }) => theme.colors.gray[2]};
+  background: ${({ theme }) => theme.colors.black.inputs};
   border-radius: 10px;
-  border: 2px solid ${({ theme }) => theme.colors.gray[1]};
+  border: 2px solid ${({ theme }) => theme.colors.gray.grayHard};
   padding: 16px;
   width: 100%;
-  color: ${({ theme }) => theme.colors.gray[1]};
+  color: ${({ theme }) => theme.colors.gray.grayHard};
 
   ${props =>
     props.isErrored &&
@@ -39,14 +39,14 @@ export const Container = styled.div<ContainerProps>`
   align-items: center;
 
   input {
-    color: ${({ theme }) => theme.colors.gray[0]};
+    color: ${({ theme }) => theme.colors.white};
 
     flex: 1;
     background: transparent;
     border: 0;
 
     &::placeholder {
-      color: ${({ theme }) => theme.colors.gray[1]};
+      color: ${({ theme }) => theme.colors.gray.grayHard};
     }
   }
 

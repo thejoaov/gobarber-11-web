@@ -26,6 +26,7 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
+    "@testing-library/react-hooks": "^5.0.3",
     "@testing-library/user-event": "^7.1.2",
     "@types/axios": "^0.14.0",
     "@types/jest": "^24.0.0",
@@ -56,9 +57,8 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "eject": "react-app-rewired eject",
-    "lint": "eslint src --ext \"js,ts,tsx\" --cache",
+    "lint": "eslint . --ext \"js,ts,tsx\" --cache",
     "prettify": "prettier --check \"src/**/*.{ts,tsx,js,jsx,json}\" --write",
-    "pretest": "react-app-rewired test --clearCache",
     "test": "react-app-rewired test --watchAll=false --runInBand",
     "test:watch": "yarn test --watch",
     "test:changed": "yarn test -o --passWithNoTests",
@@ -83,17 +83,17 @@
   "jest": {
     "moduleNameMapper": {
       "^react-spring(.*)$": "<rootDir>/__mocks__/react-spring-mock.js",
-      "^src/(.*)$": "<rootDir>/src/$1",
-      "^assets/(.*)$": "<rootDir>/src/assets/$1",
-      "^components/(.*)$": "<rootDir>/src/components/$1",
-      "^config/(.*)$": "<rootDir>/src/config/$1",
-      "^hooks/(.*)$": "<rootDir>/src/hooks/$1",
-      "^pages/(.*)$": "<rootDir>/src/pages/$1",
-      "^routes/(.*)$": "<rootDir>/src/routes/$1",
-      "^services/(.*)$": "<rootDir>/src/services/$1",
-      "^styles/(.*)$": "<rootDir>/src/styles/$1",
-      "^utils/(.*)$": "<rootDir>/src/utils/$1",
-      "^hooks": "<rootDir>/src/hooks"
+      "^@src/(.*)$": "<rootDir>/src/$1",
+      "^@assets/(.*)$": "<rootDir>/src/assets/$1",
+      "^@components": "<rootDir>/src/components",
+      "^@config/(.*)$": "<rootDir>/src/config/$1",
+      "^@hooks/(.*)$": "<rootDir>/src/hooks/$1",
+      "^@pages/(.*)$": "<rootDir>/src/pages/$1",
+      "^@routes/(.*)$": "<rootDir>/src/routes/$1",
+      "^@services/(.*)$": "<rootDir>/src/services/$1",
+      "^@styles/(.*)$": "<rootDir>/src/styles/$1",
+      "^@utils/(.*)$": "<rootDir>/src/utils/$1",
+      "^@hooks": "<rootDir>/src/hooks"
     },
     "coveragePathIgnorePatterns": [
       "/node_modules/",

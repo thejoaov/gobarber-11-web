@@ -7,46 +7,47 @@
  * and change the file extension to .tsx;
  * The test here is made to pass, obviously.
  */
-// /* eslint-disable prefer-const */
-// import React from 'react';
-// import { ReactTestRenderer, act, create } from 'react-test-renderer';
-// import { ThemeProvider } from 'styled-components';
+/* eslint-disable prefer-const */
+import React from 'react'
+import { ReactTestRenderer, act, create } from 'react-test-renderer'
+import { ThemeProvider } from 'styled-components'
 
-// import Input from '..';
-// import theme from 'styles/theme';
-// import GlobalStyle from 'styles/global';
-// import { findByTestID } from 'config/testConfig';
-// import { AuthProvider } from 'hooks/AuthContext';
-// import ToastContainer from 'ToastContainer';
-// import { InputProps } from '../types';
+import theme from '@styles/theme'
+import GlobalStyle from '@styles/global'
+// import { findByTestID } from '@config/testConfig'
+import ContextProvider from '@hooks'
+import Input from '..'
+import { Props } from '../types'
 
-// let wrapper: ReactTestRenderer;
-// let initialProps: InputProps = { name: 'test', testID: 'input' };
+jest.mock('@unform/core', () => ({
+  useField: (name: any) => ({
+    fieldName: name,
+    error: null,
+    defaultValue: '',
+    registerField: () => name,
+  }),
+}))
 
-// const InputMock: React.FC = () => (
-//   <ThemeProvider theme={theme}>
-//     <GlobalStyle />
-//     <AuthProvider>
-//       <Input {...initialProps} />
-//     </AuthProvider>
-//     <ToastContainer />
-//   </ThemeProvider>
-// );
+let wrapper: ReactTestRenderer
+let initialProps: Props = { name: 'test', testID: 'input' }
 
-// describe('Input test suite', () => {
-//   beforeEach(async () => {
-//     await act(async () => {
-//       wrapper = create(<InputMock />);
-//     });
-//   });
-
-//   it('should render without explode', () => {
-//     expect(wrapper).toBeTruthy();
-//   });
-// });
+const InputMock: React.FC = () => (
+  <ThemeProvider theme={theme}>
+    <GlobalStyle />
+    <ContextProvider>
+      <Input {...initialProps} />
+    </ContextProvider>
+  </ThemeProvider>
+)
 
 describe('Input test suite', () => {
-  it('should be able to sum', () => {
-    expect(1 + 1).toBe(2)
+  beforeEach(() => {
+    act(() => {
+      wrapper = create(<InputMock />)
+    })
+  })
+
+  it('should render without explode', () => {
+    expect(wrapper).toBeTruthy()
   })
 })

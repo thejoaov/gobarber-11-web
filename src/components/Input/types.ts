@@ -1,8 +1,10 @@
 import { InputHTMLAttributes } from 'react'
 import { IconBaseProps } from 'react-icons'
 
-export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+export type InputProps = {
   name: string
   icon?: React.ComponentType<IconBaseProps>
-  testID: string
+  testID?: string
 }
+
+export type Props = InputHTMLAttributes<HTMLInputElement> & InputProps

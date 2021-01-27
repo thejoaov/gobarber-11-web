@@ -3,9 +3,9 @@ import React from 'react'
 import { ReactTestRenderer, act, create } from 'react-test-renderer'
 import { ThemeProvider } from 'styled-components'
 
-import theme from 'styles/theme'
-import GlobalStyle from 'styles/global'
-// import { findByTestID } from 'config/testConfig';
+import theme from '@styles/theme'
+import GlobalStyle from '@styles/global'
+// import { findByTestID } from '@config/testConfig';
 import Tooltip from '..'
 import { TooltipProps } from '../types'
 
@@ -20,8 +20,8 @@ const TooltipMock: React.FC = () => (
 )
 
 describe('Tooltip test suite', () => {
-  beforeEach(async () => {
-    await act(async () => {
+  beforeEach(() => {
+    act(() => {
       wrapper = create(<TooltipMock />)
     })
   })

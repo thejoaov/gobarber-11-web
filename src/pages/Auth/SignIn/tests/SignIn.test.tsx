@@ -3,10 +3,10 @@ import { ReactTestRenderer, act, create } from 'react-test-renderer'
 import { ThemeProvider } from 'styled-components'
 import { BrowserRouter } from 'react-router-dom'
 
-import theme from 'styles/theme'
-import GlobalStyle from 'styles/global'
-import { findByTestID } from 'config/testConfig'
-import ContextProvider from 'hooks'
+import theme from '@styles/theme'
+import GlobalStyle from '@styles/global'
+import { findByTestID } from '@config/testConfig'
+import ContextProvider from '@hooks'
 import SignIn from '..'
 
 let wrapper: ReactTestRenderer
@@ -23,8 +23,8 @@ const SignInMock: React.FC = () => (
 )
 
 describe('SignIn test suite', () => {
-  beforeEach(async () => {
-    await act(async () => {
+  beforeEach(() => {
+    act(() => {
       wrapper = create(<SignInMock />)
     })
   })

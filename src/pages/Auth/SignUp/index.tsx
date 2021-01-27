@@ -5,12 +5,11 @@ import { FormHandles } from '@unform/core'
 import { Link, useHistory } from 'react-router-dom'
 import * as Yup from 'yup'
 
-import Input from 'components/Input'
-import logoImg from 'assets/logo.svg'
-import Button from 'components/Button'
-import getValidationErrors from 'utils/getValidationErrors'
-import { Api } from 'services/api'
-import { useToast } from 'hooks/ToastContext'
+import logoImg from '@assets/logo.svg'
+import { Input, Button } from '@components'
+import getValidationErrors from '@utils/getValidationErrors'
+import { Api } from '@services/api'
+import { useToast } from '@hooks/ToastContext'
 
 import { Container, Content, Background, AnimatedContainer } from './styles'
 import { SignUpFormData } from './types'
@@ -73,8 +72,20 @@ const SignUp: React.FC = () => {
             <h1>Faça seu cadastro</h1>
 
             <Input testID="input-name" icon={FiUser} name="name" placeholder="Nome" />
-            <Input testID="input-email" icon={FiMail} name="email" type="email" placeholder="Email" />
-            <Input testID="input-password" icon={FiLock} name="password" type="password" placeholder="Senha" />
+            <Input
+              testID="input-email"
+              icon={FiMail}
+              name="email"
+              type="email"
+              placeholder="Email"
+            />
+            <Input
+              testID="input-password"
+              icon={FiLock}
+              name="password"
+              type="password"
+              placeholder="Senha"
+            />
 
             <Button testID="submit-button" type="submit">
               Cadastrar

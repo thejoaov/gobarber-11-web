@@ -15,7 +15,7 @@ export default createGlobalStyle`
   }
 
   body, input, button {
-    font-family: ${({ theme }) => theme.fonts.body}, serif;
+    font-family: ${({ theme }) => theme.fonts.default}, serif;
     font-size: 16px;
   }
 

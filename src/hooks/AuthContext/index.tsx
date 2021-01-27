@@ -1,6 +1,6 @@
 import React, { createContext, useCallback, useContext, useState } from 'react'
-import { Api } from 'services/api'
-import { Storage } from 'services/storage'
+import { Api } from '@services/api'
+import { Storage } from '@services/storage'
 import { AuthContextData, AuthState } from './types'
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData)
@@ -39,7 +39,11 @@ export const AuthProvider: React.FC = ({ children }) => {
     setData({} as AuthState)
   }, [])
 
-  return <AuthContext.Provider value={{ user: data.user, signIn, signOut }}>{children}</AuthContext.Provider>
+  return (
+    <AuthContext.Provider value={{ user: data.user, signIn, signOut }}>
+      {children}
+    </AuthContext.Provider>
+  )
 }
 
 export const useAuth = (): AuthContextData => {

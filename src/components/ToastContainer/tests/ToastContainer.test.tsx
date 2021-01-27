@@ -3,9 +3,9 @@ import React from 'react'
 import { ReactTestRenderer, act, create } from 'react-test-renderer'
 import { ThemeProvider } from 'styled-components'
 
-import theme from 'styles/theme'
-import GlobalStyle from 'styles/global'
-import { ToastMessage } from 'hooks/ToastContext/types'
+import theme from '@styles/theme'
+import GlobalStyle from '@styles/global'
+import { ToastMessage } from '@hooks/ToastContext/types'
 
 import ToastContainer from '..'
 

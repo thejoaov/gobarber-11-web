@@ -5,23 +5,27 @@ declare module 'styled-components' {
     colors: {
       primary: string
       background: string
-      secondary: string[]
-      gray: string[]
-      transparency: string[]
+      white: string
+      black: {
+        black: string
+        inputs: string
+        medium: string
+        shape: string
+      }
+      gray: {
+        gray: string
+        grayHard: string
+      }
+      transparency: string
       semantic: {
         success: string
         warning: string
         error: string
         info: string
       }
-      black: string
-      white: string
     }
     fonts: {
-      headings: string
-      headingsMedium: string
-      body: string
-      bodyRegular: string
+      [key: string]: string
     }
   }
 }
@@ -30,23 +34,27 @@ const theme: DefaultTheme = {
   colors: {
     primary: '#ff9000',
     background: '#312E38',
-    secondary: ['#ebf8ff'],
-    transparency: ['rgba(0, 0, 0, 0.2)'],
-    gray: ['#f4ede8', '#666360', '#232129'],
-    semantic: {
-      success: '#00a99d',
-      warning: '#ff9000',
-      error: '#c53030',
-      info: '#3172b7',
+    white: '#F4EDE8',
+    transparency: 'rgba(0, 0, 0, 0.2)',
+    black: {
+      black: '#000000',
+      inputs: '#232129',
+      medium: '#28262E',
+      shape: '#3E3B47',
     },
-    black: '#000',
-    white: '#fff',
+    gray: {
+      gray: '#999591',
+      grayHard: '#666360',
+    },
+    semantic: {
+      success: '#007633',
+      warning: '#6500b3',
+      error: '#c53030',
+      info: '#214c7b',
+    },
   },
   fonts: {
-    headings: 'Roboto Slab',
-    headingsMedium: 'Roboto Slab',
-    body: 'Roboto Slab',
-    bodyRegular: 'Roboto Slab',
+    default: 'Roboto Slab',
   },
 }
 

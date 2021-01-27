@@ -1,7 +1,7 @@
 import styled, { keyframes } from 'styled-components'
 import { shade } from 'polished'
 
-import signInBgImg from 'assets/sign-in-background.png'
+import signInBgImg from '@assets/sign-in-background.png'
 
 export const Container = styled.div`
   height: 100vh;
@@ -52,14 +52,14 @@ export const AnimatedContainer = styled.div`
     }
 
     a {
-      color: ${({ theme }) => theme.colors.gray[0]};
+      color: ${({ theme }) => theme.colors.white};
       display: block;
       margin-top: 24px;
       text-decoration: none;
       transition: color 0.2s;
 
       &:hover {
-        color: ${({ theme }) => shade(0.2, theme.colors.gray[0])};
+        color: ${({ theme }) => shade(0.2, theme.colors.white)};
       }
     }
   }

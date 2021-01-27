@@ -5,3 +5,14 @@ build
 **/*.jpg
 **/*.png
 **/*.svg
+.gitattributes
+.gitignore
+.huskyrc.json
+.lintstagedrc.json
+.prettierignore
+.prettierrc
+config-overrides.js
+package.json
+tsconfig.json
+tsconfig.paths.json
+yarn.lock
