@@ -6,10 +6,10 @@ import { Link, useHistory } from 'react-router-dom'
 import * as Yup from 'yup'
 
 import logoImg from '@assets/logo.svg'
-import { Input, Button } from '@components'
 import getValidationErrors from '@utils/getValidationErrors'
 import { Api } from '@services/api'
 import { useToast } from '@hooks/ToastContext'
+import { Input, Button } from '@components'
 
 import { Container, Content, Background, AnimatedContainer } from './styles'
 import { SignUpFormData } from './types'

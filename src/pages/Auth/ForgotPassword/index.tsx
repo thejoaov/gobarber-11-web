@@ -5,11 +5,11 @@ import { Form } from '@unform/web'
 import * as Yup from 'yup'
 import { Link } from 'react-router-dom'
 
-import { Input, Button } from '@components'
 import { useToast } from '@hooks/ToastContext'
 import getValidationErrors from '@utils/getValidationErrors'
 import { Api } from '@services/api'
 import logoImg from '@assets/logo.svg'
+import { Input, Button } from '@components'
 
 import { Container, Content, AnimationContainer, Background } from './styles'
 import { ForgotPasswordFormData } from './types'
