@@ -1,15 +1,23 @@
-export interface SignInCredentials {
+export type SignInCredentials = {
   email: string
   password: string
 }
 
-export interface AuthContextData {
-  user: object
-  signIn(credentials: SignInCredentials): Promise<void>
-  signOut(): void
+export type User = {
+  id: string
+  name: string
+  avatar_url: string | null
+  email: string
 }
 
-export interface AuthState {
+export type AuthContextData = {
+  user: User
+  signIn(credentials: SignInCredentials): Promise<void>
+  signOut(): void
+  updateUser(user: User): void
+}
+
+export type AuthState = {
   token: string
-  user: object
+  user: User
 }

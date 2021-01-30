@@ -25,12 +25,15 @@
   },
   "plugins": ["react", "@typescript-eslint", "react-hooks", "prettier"],
   "rules": {
+    "camelcase": "off",
     "@typescript-eslint/explicit-function-return-type": [
       "error",
       {
         "allowExpressions": true
       }
     ],
+    "complexity": ["warn", { "maximum": 8 }],
+    "import/no-duplicates": "off",
     "@typescript-eslint/no-unused-expressions": "off",
     "@typescript-eslint/camelcase": "off",
     "react/prop-types": "off",

@@ -16,6 +16,8 @@ import { SignInFormData } from './types'
 
 const SignIn: React.FC = () => {
   const [errorCount, setErrorCount] = useState(0)
+  const [loading, setLoading] = useState(false)
+
   const formRef = useRef<FormHandles>(null)
 
   const { signIn } = useAuth()
@@ -25,6 +27,7 @@ const SignIn: React.FC = () => {
   const handleSubmit = useCallback(
     async (data: SignInFormData) => {
       try {
+        setLoading(true)
         formRef.current?.setErrors({})
 
         const schema = Yup.object().shape({
@@ -67,6 +70,8 @@ const SignIn: React.FC = () => {
             onClick: () => history.push('/forgot-password'),
           })
         }
+      } finally {
+        setLoading(false)
       }
     },
     [signIn, addToast, errorCount, history],
@@ -96,7 +101,7 @@ const SignIn: React.FC = () => {
               testID="input-password"
             />
 
-            <Button type="submit" testID="submit-button">
+            <Button loading={loading} type="submit" testID="submit-button">
               Entrar
             </Button>
 

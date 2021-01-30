@@ -1,7 +1,8 @@
 import React, { createContext, useCallback, useContext, useState } from 'react'
 import { Api } from '@services/api'
+import { API as ApiConfig } from '@services/api/config'
 import { Storage } from '@services/storage'
-import { AuthContextData, AuthState } from './types'
+import { AuthContextData, AuthState, User } from './types'
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData)
 
@@ -11,6 +12,8 @@ export const AuthProvider: React.FC = ({ children }) => {
     const user = Storage.getItem('user')
 
     if (token && user) {
+      ApiConfig.defaults.headers.authorization = `Bearer ${token}`
+
       return { token, user }
     }
 
@@ -18,10 +21,7 @@ export const AuthProvider: React.FC = ({ children }) => {
   })
 
   const signIn = useCallback(async ({ password, email }) => {
-    const response = await Api.login({
-      password,
-      email,
-    })
+    const response = await Api.login(email, password)
 
     const { token, user } = response.data
 
@@ -29,6 +29,8 @@ export const AuthProvider: React.FC = ({ children }) => {
       { name: 'token', data: token },
       { name: 'user', data: user },
     ])
+
+    ApiConfig.defaults.headers.authorization = `Bearer ${token}`
 
     setData({ token, user })
   }, [])
@@ -39,8 +41,20 @@ export const AuthProvider: React.FC = ({ children }) => {
     setData({} as AuthState)
   }, [])
 
+  const updateUser = useCallback(
+    (user: User) => {
+      localStorage.setItem('@GoBarber:user', JSON.stringify(user))
+
+      setData({
+        token: data.token,
+        user,
+      })
+    },
+    [data.token],
+  )
+
   return (
-    <AuthContext.Provider value={{ user: data.user, signIn, signOut }}>
+    <AuthContext.Provider value={{ user: data.user, signIn, signOut, updateUser }}>
       {children}
     </AuthContext.Provider>
   )

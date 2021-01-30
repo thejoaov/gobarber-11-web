@@ -17,6 +17,10 @@ describe('Api service test suite', () => {
     expect(Api.signUp).toBeDefined()
     expect(Api.forgotPassword).toBeDefined()
     expect(Api.resetPassword).toBeDefined()
+    expect(Api.listProviderAppointments).toBeDefined()
+    expect(Api.getProviderMonthAvailability).toBeDefined()
+    expect(Api.updateProfile).toBeDefined()
+    expect(Api.updateAvatar).toBeDefined()
   })
 
   describe('login', () => {
@@ -24,7 +28,7 @@ describe('Api service test suite', () => {
       const email = 'naruto.uzumaki@fakemail.com'
       const password = '123456'
 
-      await expect(Api.login({ email, password })).resolves.toEqual(fakeResponse)
+      await expect(Api.login(email, password)).resolves.toEqual(fakeResponse)
     })
   })
 
@@ -59,6 +63,52 @@ describe('Api service test suite', () => {
           passwordConfirmation,
         }),
       ).resolves.toEqual(fakeResponse)
+    })
+  })
+
+  describe('listProviderAppointments', () => {
+    it('should list provider appointments', async () => {
+      const year = 2021
+      const month = 6
+      const day = 9
+
+      await expect(Api.listProviderAppointments(year, month, day)).resolves.toEqual(fakeResponse)
+    })
+  })
+
+  describe('getProviderMonthAvailability', () => {
+    it('should get provider availability by month', async () => {
+      const user_id = '1'
+      const month = 6
+      const day = 9
+
+      await expect(Api.getProviderMonthAvailability(user_id, month, day)).resolves.toEqual(
+        fakeResponse,
+      )
+    })
+  })
+
+  describe('updateProfile', () => {
+    it('should update user profile', async () => {
+      const name = 'Joh Doe'
+      const email = 'johndoe@fake.com'
+      const password = 'password123'
+
+      await expect(
+        Api.updateProfile({
+          name,
+          email,
+          password,
+        }),
+      ).resolves.toEqual(fakeResponse)
+    })
+  })
+
+  describe('updateAvatar', () => {
+    it('should update user avatar', async () => {
+      const formData = new FormData()
+
+      await expect(Api.updateAvatar(formData)).resolves.toEqual(fakeResponse)
     })
   })
 })

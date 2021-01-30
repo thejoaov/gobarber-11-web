@@ -1,12 +1,20 @@
 /* eslint-disable @typescript-eslint/camelcase */
 import { AxiosPromise } from 'axios'
 import { API } from './config'
+import {
+  LoginResponse,
+  SignUpResponse,
+  Appointment,
+  ProviderMonthAvailability,
+  UpdateProfileResponse,
+  UpdateAvatarResponse,
+} from './types'
 
 export const Api = {
   /**
    * Send a request to login
    */
-  login: ({ email, password }: { email: string; password: string }): AxiosPromise<any> =>
+  login: (email: string, password: string): AxiosPromise<LoginResponse> =>
     API.post('/sessions', {
       password,
       email,
@@ -23,7 +31,7 @@ export const Api = {
     name: string
     email: string
     password: string
-  }): AxiosPromise<any> =>
+  }): AxiosPromise<SignUpResponse> =>
     API.post('/users', {
       name,
       password,
@@ -55,4 +63,49 @@ export const Api = {
       password_confirmation: passwordConfirmation,
       token,
     }),
+
+  /**
+   * Get provider month availability
+   */
+  getProviderMonthAvailability: (
+    user_id: string,
+    year: number,
+    month: number,
+  ): AxiosPromise<ProviderMonthAvailability[]> =>
+    API.get(`/providers/${user_id}/month-availability`, {
+      params: { year, month },
+    }),
+
+  /**
+   * List provider appointments
+   */
+  listProviderAppointments: (
+    year: number,
+    month: number,
+    day: number,
+  ): AxiosPromise<Appointment[]> =>
+    API.get('/appointments/me', {
+      params: {
+        year,
+        month,
+        day,
+      },
+    }),
+
+  /**
+   * Update user profile
+   */
+  updateProfile: (data: {
+    name: string
+    email: string
+    old_password?: string
+    password?: string
+    password_confirmation?: string
+  }): AxiosPromise<UpdateProfileResponse> => API.put('profile', data),
+
+  /**
+   * Update avatar
+   */
+  updateAvatar: (data: FormData): AxiosPromise<UpdateAvatarResponse> =>
+    API.patch('/users/avatar', data),
 }
