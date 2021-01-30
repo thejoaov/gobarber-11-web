@@ -1,5 +1,6 @@
 import React, { createContext, useCallback, useContext, useState } from 'react'
 import { Api } from '@services/api'
+import { API as ApiConfig } from '@services/api/config'
 import { Storage } from '@services/storage'
 import { AuthContextData, AuthState } from './types'
 
@@ -11,6 +12,8 @@ export const AuthProvider: React.FC = ({ children }) => {
     const user = Storage.getItem('user')
 
     if (token && user) {
+      ApiConfig.defaults.headers.authorization = `Bearer ${token}`
+
       return { token, user }
     }
 
@@ -18,10 +21,7 @@ export const AuthProvider: React.FC = ({ children }) => {
   })
 
   const signIn = useCallback(async ({ password, email }) => {
-    const response = await Api.login({
-      password,
-      email,
-    })
+    const response = await Api.login(password, email)
 
     const { token, user } = response.data
 
@@ -29,6 +29,8 @@ export const AuthProvider: React.FC = ({ children }) => {
       { name: 'token', data: token },
       { name: 'user', data: user },
     ])
+
+    ApiConfig.defaults.headers.authorization = `Bearer ${token}`
 
     setData({ token, user })
   }, [])
