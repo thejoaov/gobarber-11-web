@@ -73,9 +73,9 @@ export const Api = {
    * List provider appointments
    */
   listProviderAppointments: (
-    day: number,
-    month: number,
     year: number,
+    month: number,
+    day: number,
   ): AxiosPromise<Appointment[]> =>
     API.get('/appointments/me', {
       params: {

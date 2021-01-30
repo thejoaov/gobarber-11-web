@@ -21,7 +21,7 @@ export const AuthProvider: React.FC = ({ children }) => {
   })
 
   const signIn = useCallback(async ({ password, email }) => {
-    const response = await Api.login(password, email)
+    const response = await Api.login(email, password)
 
     const { token, user } = response.data
 

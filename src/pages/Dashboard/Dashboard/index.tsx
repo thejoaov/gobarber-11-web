@@ -2,12 +2,13 @@ import React, { useCallback, useState, useEffect, useMemo } from 'react'
 import { FiClock, FiPower } from 'react-icons/fi'
 import DayPicker, { DayModifiers } from 'react-day-picker'
 import 'react-day-picker/lib/style.css'
-import { isToday, format, isThisMonth } from 'date-fns'
+import { isToday, format, isThisMonth, parseISO } from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR'
 
 import { dayPickerConfig } from '@config/dayPickerConfig'
 import { useAuth } from '@hooks/AuthContext'
 import logoImg from '@assets/logo.svg'
+import userImg from '@assets/user.svg'
 import { Api } from '@services/api'
 
 import {
@@ -22,13 +23,14 @@ import {
   NextAppointment,
   Calendar,
 } from './styles'
-import { MonthAvailabilityItem } from './types'
+import { AppointmentFormatted, MonthAvailabilityItem } from './types'
 
 const Dashboard: React.FC = () => {
   const { signOut, user } = useAuth()
   const [selectedDate, setSelectedDate] = useState(new Date())
   const [currentMonth, setCurrentMonth] = useState(new Date())
   const [monthAvailability, setMonthAvailability] = useState<MonthAvailabilityItem[]>([])
+  const [appointments, setAppointments] = useState<AppointmentFormatted[]>([])
 
   const handleDateChange = useCallback((day: Date, modifiers: DayModifiers) => {
     if (modifiers.available) {
@@ -49,6 +51,21 @@ const Dashboard: React.FC = () => {
       setMonthAvailability(response.data)
     })
   }, [currentMonth, user.id])
+
+  useEffect(() => {
+    Api.listProviderAppointments(
+      selectedDate.getFullYear(),
+      selectedDate.getMonth() + 1,
+      selectedDate.getDate(),
+    ).then(response => {
+      const appointmentsFormatted = response.data.map(appointment => ({
+        ...appointment,
+        hourFormatted: format(parseISO(appointment.date), 'HH:mm'),
+      }))
+
+      setAppointments(appointmentsFormatted)
+    })
+  }, [selectedDate])
 
   const disabledDays = useMemo(() => {
     const dates = monthAvailability
@@ -80,6 +97,18 @@ const Dashboard: React.FC = () => {
     })
   }, [selectedDate])
 
+  const morningAppointments = useMemo(() => {
+    return appointments.filter(appointment => {
+      return parseISO(appointment.date).getHours() < 12
+    })
+  }, [appointments])
+
+  const afternoonAppointments = useMemo(() => {
+    return appointments.filter(appointment => {
+      return parseISO(appointment.date).getHours() >= 12
+    })
+  }, [appointments])
+
   return (
     <Container>
       <Header>
@@ -87,13 +116,7 @@ const Dashboard: React.FC = () => {
           <img src={logoImg} alt="GoBarber" />
 
           <Profile>
-            <img
-              src={
-                user.avatar_url ||
-                'https://odia.ig.com.br/_midias/jpg/2020/10/02/1200x750/1_1637z75ryqnj7dfso1bvrz839-19948053.jpg'
-              }
-              alt={user.name}
-            />
+            <img src={user.avatar_url || userImg} alt={user.name} />
             <div>
               <span>Bem vindo,</span>
               <strong>{user.name}</strong>
@@ -114,76 +137,59 @@ const Dashboard: React.FC = () => {
 
           <span>{selectedWeekDay}</span>
 
-          <NextAppointment>
-            <strong>Atendimento a seguir</strong>
-            <div>
-              <img
-                src="https://odia.ig.com.br/_midias/jpg/2020/10/02/1200x750/1_1637z75ryqnj7dfso1bvrz839-19948053.jpg"
-                alt="Nome do usuário"
-              />
+          {!!appointments[0] && (
+            <NextAppointment>
+              <strong>Atendimento a seguir</strong>
+              <div>
+                <img
+                  src={appointments[0].user?.avatar_url || userImg}
+                  alt={appointments[0].user.name}
+                />
 
-              <strong>Nome do usuário</strong>
-              <span>
-                <FiClock />
-                08:00
-              </span>
-            </div>
-          </NextAppointment>
+                <strong>{appointments[0].user.name}</strong>
+                <span>
+                  <FiClock />
+                  {appointments[0].hourFormatted}
+                </span>
+              </div>
+            </NextAppointment>
+          )}
 
           <Section>
             <strong>Manhã</strong>
+            {morningAppointments.map(appointment => (
+              <Appointment key={appointment.id}>
+                <span>
+                  <FiClock />
+                  {appointment.hourFormatted}
+                </span>
 
-            <Appointment>
-              <span>
-                <FiClock />
-                08:00
-              </span>
+                <div>
+                  <img src={appointment.user.avatar_url || userImg} alt={appointment.user.name} />
 
-              <div>
-                <img
-                  src="https://odia.ig.com.br/_midias/jpg/2020/10/02/1200x750/1_1637z75ryqnj7dfso1bvrz839-19948053.jpg"
-                  alt="Nome do usuário"
-                />
-
-                <strong>Nome do usuário</strong>
-              </div>
-            </Appointment>
-
-            <Appointment>
-              <span>
-                <FiClock />
-                08:00
-              </span>
-
-              <div>
-                <img
-                  src="https://odia.ig.com.br/_midias/jpg/2020/10/02/1200x750/1_1637z75ryqnj7dfso1bvrz839-19948053.jpg"
-                  alt="Nome do usuário"
-                />
-
-                <strong>Nome do usuário</strong>
-              </div>
-            </Appointment>
+                  <strong>{appointment.user.name}</strong>
+                </div>
+              </Appointment>
+            ))}
           </Section>
 
           <Section>
             <strong>Tarde</strong>
 
-            <Appointment>
-              <span>
-                <FiClock />
-                08:00
-              </span>
+            {afternoonAppointments.map(appointment => (
+              <Appointment key={appointment.id}>
+                <span>
+                  <FiClock />
+                  {appointment.hourFormatted}
+                </span>
 
-              <div>
-                <img
-                  src="https://odia.ig.com.br/_midias/jpg/2020/10/02/1200x750/1_1637z75ryqnj7dfso1bvrz839-19948053.jpg"
-                  alt="Nome do usuário"
-                />
+                <div>
+                  <img src={appointment.user.avatar_url || userImg} alt={appointment.user.name} />
 
-                <strong>Nome do usuário</strong>
-              </div>
-            </Appointment>
+                  <strong>{appointment.user.name}</strong>
+                </div>
+              </Appointment>
+            ))}
           </Section>
         </Schedule>
 

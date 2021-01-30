@@ -129,7 +129,7 @@ export const NextAppointment = styled.div`
       width: 80px;
       height: 80px;
       border-radius: 50%;
-      background: ${({ theme }) => theme.colors.primary};
+      background: ${({ theme }) => theme.colors.black.medium};
     }
     strong {
       margin-left: 24px;
@@ -289,7 +289,7 @@ export const Appointment = styled.div`
       width: 56px;
       height: 56px;
       border-radius: 50%;
-      background: ${({ theme }) => theme.colors.primary};
+      background: ${({ theme }) => theme.colors.black.medium};
     }
     strong {
       margin-left: 16px;
