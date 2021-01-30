@@ -79,3 +79,4 @@ exclude_patterns:
 - "**/types.ts"
 - "config-overrides.js"
 - "src/setupTests.ts"
+- "**/styles.ts"
