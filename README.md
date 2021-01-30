@@ -5,6 +5,7 @@
 
 [![CircleCI][circleci-img]][circleci-url]
 [![codecov][codecov-badge]][codecov-badge-url]
+[![Maintainability][codeclimate-img]][codeclimate-url]
 
 </div>
 
@@ -25,3 +26,5 @@ So, the code avaiable here may differ from the original, which can be found [HER
 [circleci-url]: https://circleci.com/gh/thejoaov/gobarber-14-web/tree/main
 [codecov-badge]: https://codecov.io/gh/thejoaov/gobarber-14-web/branch/main/graph/badge.svg
 [codecov-badge-url]: https://codecov.io/gh/thejoaov/gobarber-14-web
+[codeclimate-img]: https://api.codeclimate.com/v1/badges/97399ba859ec16e6b30f/maintainability
+[codeclimate-url]: https://codeclimate.com/github/thejoaov/gobarber-14-web/maintainability
