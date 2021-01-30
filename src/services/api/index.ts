@@ -98,7 +98,9 @@ export const Api = {
   updateProfile: (data: {
     name: string
     email: string
-    password: string
+    old_password?: string
+    password?: string
+    password_confirmation?: string
   }): AxiosPromise<UpdateProfileResponse> => API.put('profile', data),
 
   /**

@@ -34,23 +34,50 @@ const Profile: React.FC = () => {
 
         const schema = Yup.object().shape({
           name: Yup.string().required('Nome obrigatório'),
-          email: Yup.string().email('Digite um e-mail válido').required('E-mail obrigatório'),
-          old_password: Yup.string().min(6, 'No mínimo 6 dígitos'),
-          password: Yup.string().min(6, 'No mínimo 6 dígitos'),
-          password_confirmation: Yup.string().oneOf([Yup.ref('password')], 'Confirmação incorreta'),
+          email: Yup.string()
+            .email('Digite um e-mail válido')
+            .required('E-mail obrigatório')
+            .email('Digite um e-mail válido'),
+          old_password: Yup.string(),
+          password: Yup.string().when('old_password', {
+            is: val => !!val.length,
+            then: Yup.string().required('Campo obrigatório'),
+            otherwise: Yup.string(),
+          }),
+          password_confirmation: Yup.string()
+            .when('old_password', {
+              is: val => !!val.length,
+              then: Yup.string().required('Campo obrigatório'),
+              otherwise: Yup.string(),
+            })
+            .oneOf([Yup.ref('password')], 'Confirmação incorreta'),
         })
 
         await schema.validate(data, {
           abortEarly: false,
         })
 
-        const response = await Api.updateProfile(data)
+        const { name, email, old_password, password, password_confirmation } = data
+
+        const formData = {
+          name,
+          email,
+          ...(old_password
+            ? {
+                old_password,
+                password,
+                password_confirmation,
+              }
+            : {}),
+        }
+
+        const response = await Api.updateProfile(formData)
         updateUser(response.data)
 
         addToast({
           type: 'success',
           title: 'Perfil atualizado!',
-          description: 'Seu perfil foi atualizado com sucesso.',
+          description: 'As informações do seu perfil foram atualizadas com sucesso!',
         })
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
@@ -63,8 +90,8 @@ const Profile: React.FC = () => {
 
         addToast({
           type: 'error',
-          title: 'Erro',
-          description: 'Ocorreu um erro ao fazer sua atualização de perfil, tente novamente.',
+          title: 'Erro na atualização',
+          description: 'Ocorreu um erro ao atualizar perfil, tente novamente',
         })
       } finally {
         setLoading(false)
