@@ -7,7 +7,7 @@ import { Api } from '@services/api'
 import theme from '@styles/theme'
 import GlobalStyle from '@styles/global'
 // import { findByTestID } from '@config/testConfig'
-import Dashboard from '..'
+import Profile from '..'
 
 jest.mock('@hooks/AuthContext', () => ({
   useAuth: jest.fn().mockReturnValue({
@@ -23,14 +23,14 @@ let wrapper: ReactTestRenderer
 let listProviderAppointmentsSpy: jest.SpyInstance
 let getProviderMonthAvailability: jest.SpyInstance
 
-const DashboardMock: React.FC = () => (
+const ProfileMock: React.FC = () => (
   <ThemeProvider theme={theme}>
     <GlobalStyle />
-    <Dashboard />
+    <Profile />
   </ThemeProvider>
 )
 
-describe('Dashboard test suite', () => {
+describe('Profile test suite', () => {
   beforeEach(() => {
     listProviderAppointmentsSpy = jest
       .spyOn(Api, 'listProviderAppointments')
@@ -40,7 +40,7 @@ describe('Dashboard test suite', () => {
       .mockResolvedValue({} as AxiosPromise)
 
     act(() => {
-      wrapper = create(<DashboardMock />)
+      wrapper = create(<ProfileMock />)
     })
   })
 

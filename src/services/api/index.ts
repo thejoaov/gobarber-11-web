@@ -1,7 +1,13 @@
 /* eslint-disable @typescript-eslint/camelcase */
 import { AxiosPromise } from 'axios'
 import { API } from './config'
-import { LoginResponse, SignUpResponse, Appointment, ProviderMonthAvailability } from './types'
+import {
+  LoginResponse,
+  SignUpResponse,
+  Appointment,
+  ProviderMonthAvailability,
+  UpdateProfileResponse,
+} from './types'
 
 export const Api = {
   /**
@@ -84,4 +90,13 @@ export const Api = {
         day,
       },
     }),
+
+  /**
+   * Update user profile
+   */
+  updateProfile: (data: {
+    name: string
+    email: string
+    password: string
+  }): AxiosPromise<UpdateProfileResponse> => API.put('profile', data),
 }

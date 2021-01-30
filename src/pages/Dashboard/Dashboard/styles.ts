@@ -7,7 +7,7 @@ export const Container = styled.div``
 
 export const Header = styled.header`
   padding: 32px 0;
-  background: ${({ theme }) => theme.colors.black.inputs};
+  background: ${({ theme }) => theme.colors.black.medium};
 `
 
 export const HeaderContent = styled.div`
@@ -55,8 +55,13 @@ export const Profile = styled.div`
       color: ${({ theme }) => theme.colors.white};
     }
 
-    strong {
+    a {
+      text-decoration: none;
       color: ${({ theme }) => theme.colors.primary};
+      transition: 0.2s;
+      &:hover {
+        opacity: 0.6;
+      }
     }
   }
 `

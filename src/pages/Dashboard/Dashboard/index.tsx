@@ -4,6 +4,7 @@ import DayPicker, { DayModifiers } from 'react-day-picker'
 import 'react-day-picker/lib/style.css'
 import { isToday, format, isThisMonth, parseISO, isAfter } from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR'
+import { Link } from 'react-router-dom'
 
 import { dayPickerConfig } from '@config/dayPickerConfig'
 import { useAuth } from '@hooks/AuthContext'
@@ -123,7 +124,9 @@ const Dashboard: React.FC = () => {
             <img src={user.avatar_url || userImg} alt={user.name} />
             <div>
               <span>Bem vindo,</span>
-              <strong>{user.name}</strong>
+              <Link to="/profile">
+                <strong>{user.name}</strong>
+              </Link>
             </div>
           </Profile>
 
