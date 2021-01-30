@@ -44,7 +44,8 @@ const Profile: React.FC = () => {
           abortEarly: false,
         })
 
-        await Api.updateProfile(data)
+        const response = await Api.updateProfile(data)
+        updateUser(response.data)
 
         addToast({
           type: 'success',
@@ -69,7 +70,7 @@ const Profile: React.FC = () => {
         setLoading(false)
       }
     },
-    [addToast],
+    [addToast, updateUser],
   )
 
   const handleAvatarChange = useCallback(
