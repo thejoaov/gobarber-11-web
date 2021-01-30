@@ -11,6 +11,8 @@ plugins:
         - .tsx
         - .js
     checks:
+      camelcase:
+        enabled: false
       react/boolean-prop-naming:
         enabled: false
       react-hooks/exhaustive-deps:
