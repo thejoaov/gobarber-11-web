@@ -6,12 +6,11 @@ import { useHistory, useLocation } from 'react-router-dom'
 import * as Yup from 'yup'
 
 import { useToast } from '@hooks/ToastContext'
-import { Input, Button } from '@components'
-
 import logoImg from '@assets/logo.svg'
 import getValidationErrors from '@utils/getValidationErrors'
 import { useAuth } from '@hooks/AuthContext'
 import { Api } from '@services/api'
+import { Input, Button } from '@components'
 
 import { Container, Content, Background, AnimatedContainer } from './styles'
 import { ResetPasswordFormData } from './types'

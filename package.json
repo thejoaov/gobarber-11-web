@@ -57,7 +57,7 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "eject": "react-app-rewired eject",
-    "lint": "eslint . --ext \"js,ts,tsx\" --cache",
+    "lint": "eslint src -c .eslintrc.json --ext \"js,ts,tsx\" --cache",
     "prettify": "prettier --check \"src/**/*.{ts,tsx,js,jsx,json}\" --write",
     "test": "react-app-rewired test --watchAll=false --runInBand",
     "test:watch": "yarn test --watch",
