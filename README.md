@@ -5,8 +5,6 @@
 
 [![CircleCI][circleci-img]][circleci-url]
 [![codecov][codecov-badge]][codecov-badge-url]
-[![Heroku][heroku-badge]][heroku-badge-url]
-
 
 </div>
 
@@ -27,5 +25,3 @@ So, the code avaiable here may differ from the original, which can be found [HER
 [circleci-url]: https://circleci.com/gh/thejoaov/gobarber-14-web/tree/main
 [codecov-badge]: https://codecov.io/gh/thejoaov/gobarber-14-web/branch/main/graph/badge.svg
 [codecov-badge-url]: https://codecov.io/gh/thejoaov/gobarber-14-web
-[heroku-badge]: https://heroku-badge.herokuapp.com/?app=gobarber-14-web&svg=1
-[heroku-badge-url]: https://https://gobarber-14-web.herokuapp.com
