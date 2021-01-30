@@ -14,6 +14,7 @@ export type AuthContextData = {
   user: User
   signIn(credentials: SignInCredentials): Promise<void>
   signOut(): void
+  updateUser(user: User): void
 }
 
 export type AuthState = {

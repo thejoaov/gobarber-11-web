@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from 'react'
+import React, { ChangeEvent, useCallback, useRef, useState } from 'react'
 import { FiUser, FiMail, FiLock, FiCamera, FiArrowLeft } from 'react-icons/fi'
 import { FormHandles } from '@unform/core'
 import { Form } from '@unform/web'
@@ -10,7 +10,7 @@ import { useAuth } from '@hooks/AuthContext'
 import { useToast } from '@hooks/ToastContext'
 import getValidationErrors from '@utils/getValidationErrors'
 import userImg from '@assets/user.svg'
-import { Input, Button } from '@components'
+import { Input, Button, ActivityIndicator } from '@components'
 
 import { Container, Content, AvatarInput } from './styles'
 import { ProfileFormData } from './types'
@@ -20,9 +20,10 @@ const Profile: React.FC = () => {
   const { addToast } = useToast()
 
   const [loading, setLoading] = useState(false)
+  const [loadingAvatar, setLoadingAvatar] = useState(false)
   // const history = useHistory()
 
-  const { user } = useAuth()
+  const { user, updateUser } = useAuth()
 
   const handleSubmit = useCallback(
     async (data: ProfileFormData) => {
@@ -71,6 +72,34 @@ const Profile: React.FC = () => {
     [addToast],
   )
 
+  const handleAvatarChange = useCallback(
+    async (e: ChangeEvent<HTMLInputElement>) => {
+      try {
+        setLoadingAvatar(true)
+        if (e.target.files) {
+          const data = new FormData()
+
+          data.append('avatar', e.target.files[0])
+          const response = await Api.updateAvatar(data)
+          updateUser(response.data)
+          addToast({
+            type: 'success',
+            title: 'Avatar atualizado!',
+          })
+        }
+      } catch (error) {
+        addToast({
+          type: 'error',
+          title: 'Erro',
+          description: 'Erro ao atualizar seu avatar. Tente novamente.',
+        })
+      } finally {
+        setLoadingAvatar(false)
+      }
+    },
+    [addToast, updateUser],
+  )
+
   return (
     <Container>
       <header>
@@ -91,9 +120,11 @@ const Profile: React.FC = () => {
           onSubmit={handleSubmit}>
           <AvatarInput>
             <img src={user.avatar_url || userImg} alt={user.name} />
-            <button type="button">
-              <FiCamera />
-            </button>
+
+            <label htmlFor="avatar">
+              {loadingAvatar ? <ActivityIndicator size={60} /> : <FiCamera />}
+              <input type="file" id="avatar" onChange={handleAvatarChange} />
+            </label>
           </AvatarInput>
 
           <h1>Meu perfil</h1>

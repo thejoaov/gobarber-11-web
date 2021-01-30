@@ -20,6 +20,7 @@ describe('Api service test suite', () => {
     expect(Api.listProviderAppointments).toBeDefined()
     expect(Api.getProviderMonthAvailability).toBeDefined()
     expect(Api.updateProfile).toBeDefined()
+    expect(Api.updateAvatar).toBeDefined()
   })
 
   describe('login', () => {
@@ -100,6 +101,14 @@ describe('Api service test suite', () => {
           password,
         }),
       ).resolves.toEqual(fakeResponse)
+    })
+  })
+
+  describe('updateAvatar', () => {
+    it('should update user avatar', async () => {
+      const formData = new FormData()
+
+      await expect(Api.updateAvatar(formData)).resolves.toEqual(fakeResponse)
     })
   })
 })

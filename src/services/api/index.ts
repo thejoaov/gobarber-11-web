@@ -7,6 +7,7 @@ import {
   Appointment,
   ProviderMonthAvailability,
   UpdateProfileResponse,
+  UpdateAvatarResponse,
 } from './types'
 
 export const Api = {
@@ -99,4 +100,10 @@ export const Api = {
     email: string
     password: string
   }): AxiosPromise<UpdateProfileResponse> => API.put('profile', data),
+
+  /**
+   * Update avatar
+   */
+  updateAvatar: (data: FormData): AxiosPromise<UpdateAvatarResponse> =>
+    API.patch('/users/avatar', data),
 }
