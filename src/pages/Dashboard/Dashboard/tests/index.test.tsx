@@ -2,6 +2,7 @@ import React from 'react'
 import { ReactTestRenderer, act, create } from 'react-test-renderer'
 import { ThemeProvider } from 'styled-components'
 import { AxiosPromise } from 'axios'
+import { BrowserRouter, Switch } from 'react-router-dom'
 
 import { Api } from '@services/api'
 import theme from '@styles/theme'
@@ -26,7 +27,11 @@ let getProviderMonthAvailability: jest.SpyInstance
 const DashboardMock: React.FC = () => (
   <ThemeProvider theme={theme}>
     <GlobalStyle />
-    <Dashboard />
+    <BrowserRouter>
+      <Switch>
+        <Dashboard />
+      </Switch>
+    </BrowserRouter>
   </ThemeProvider>
 )
 

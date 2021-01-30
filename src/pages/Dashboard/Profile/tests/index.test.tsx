@@ -1,9 +1,8 @@
 import React from 'react'
 import { ReactTestRenderer, act, create } from 'react-test-renderer'
 import { ThemeProvider } from 'styled-components'
-import { AxiosPromise } from 'axios'
+import { BrowserRouter, Switch } from 'react-router-dom'
 
-import { Api } from '@services/api'
 import theme from '@styles/theme'
 import GlobalStyle from '@styles/global'
 // import { findByTestID } from '@config/testConfig'
@@ -20,25 +19,20 @@ jest.mock('@hooks/AuthContext', () => ({
 }))
 
 let wrapper: ReactTestRenderer
-let listProviderAppointmentsSpy: jest.SpyInstance
-let getProviderMonthAvailability: jest.SpyInstance
 
 const ProfileMock: React.FC = () => (
   <ThemeProvider theme={theme}>
     <GlobalStyle />
-    <Profile />
+    <BrowserRouter>
+      <Switch>
+        <Profile />
+      </Switch>
+    </BrowserRouter>
   </ThemeProvider>
 )
 
 describe('Profile test suite', () => {
   beforeEach(() => {
-    listProviderAppointmentsSpy = jest
-      .spyOn(Api, 'listProviderAppointments')
-      .mockResolvedValue({} as AxiosPromise)
-    getProviderMonthAvailability = jest
-      .spyOn(Api, 'getProviderMonthAvailability')
-      .mockResolvedValue({} as AxiosPromise)
-
     act(() => {
       wrapper = create(<ProfileMock />)
     })
@@ -46,13 +40,5 @@ describe('Profile test suite', () => {
 
   it('should render without explode', () => {
     expect(wrapper).toBeTruthy()
-  })
-
-  it('should request provider list appointments from api', () => {
-    expect(listProviderAppointmentsSpy).toHaveBeenCalled()
-  })
-
-  it('should request provider month availability from api', () => {
-    expect(getProviderMonthAvailability).toHaveBeenCalled()
   })
 })
