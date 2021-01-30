@@ -10,7 +10,7 @@
 
 </div>
 
-This repository contains the GoBarber FrontEnd application, developed during RocketSeat Bootcamp GoStack 11, improved with my current knowledge about some patterns, tests, and my personal code preferences.
+This repository contains the GoBarber FrontEnd application, developed during RocketSeat Bootcamp GoStack 14, improved with my current knowledge about some patterns, tests, and my personal code preferences.
 
 So, the code avaiable here may differ from the original, which can be found [HERE][gobarber-rocketseat].
 
@@ -22,10 +22,10 @@ So, the code avaiable here may differ from the original, which can be found [HER
 - [x] CI (CircleCI)
 - [x] CD (Heroku)
 
-[gobarber-rocketseat]: https://github.com/rocketseat-education/bootcamp-gostack-modulos/tree/master/nivel-03/02-iniciando-o-front-end-web
-[circleci-img]: https://circleci.com/gh/thejoaov/gobarber-11-web/tree/main.svg?style=svg
-[circleci-url]: https://circleci.com/gh/thejoaov/gobarber-11-web/tree/main
-[codecov-badge]: https://codecov.io/gh/thejoaov/gobarber-11-web/branch/main/graph/badge.svg
-[codecov-badge-url]: https://codecov.io/gh/thejoaov/gobarber-11-web
-[heroku-badge]: https://heroku-badge.herokuapp.com/?app=gobarber-11-web&svg=1
-[heroku-badge-url]: https://https://gobarber-11-web.herokuapp.com
+[gobarber-rocketseat]: https://github.com/rocketseat-education/bootcamp-gostack-modulos
+[circleci-img]: https://circleci.com/gh/thejoaov/gobarber-14-web/tree/main.svg?style=svg
+[circleci-url]: https://circleci.com/gh/thejoaov/gobarber-14-web/tree/main
+[codecov-badge]: https://codecov.io/gh/thejoaov/gobarber-14-web/branch/main/graph/badge.svg
+[codecov-badge-url]: https://codecov.io/gh/thejoaov/gobarber-14-web
+[heroku-badge]: https://heroku-badge.herokuapp.com/?app=gobarber-14-web&svg=1
+[heroku-badge-url]: https://https://gobarber-14-web.herokuapp.com
